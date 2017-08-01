@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Cloud Optimized GeoTIFF in depth</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1>Cloud Optimized GeoTIFF in depth</h1>
+						<p>Technical overview of how a COG works</p>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Content -->
+							<section id="content" class="main">
+								<h2>Overview</h2>
+								<p>Cloud Optimized GeoTIFF rely on two complementary pieces of technology.</p>
+                <p>The first is the ability of GeoTIFF’s to store not just the raw pixels of the image, but to organize those pixels in particular ways. The second is HTTP GET range requests, that let clients ask for just the portions of a file that they need. Using the first organizes the GeoTIFF so the latter’s requests can easily select the parts of the file that are useful for processing.</p>
+                <h2>GeoTIFF Organization</h2>
+                <p>The two main organization techniques that Cloud Optimized GeoTIFF’s use are Tiling and Overviews. And the data is also compressed for more efficient passage online.</p>
+								<p><b>Tiling</b> creates a number of internal ‘tiles’ inside the actual image, instead of using simple ‘stripes’ of data. With a stripe of data then the whole file needs to be read to get the key piece. With tiles much quicker access to a certain area is possible, so that just the portion of the file that needs to be read is accessed.</p>
+                <p><b>Overviews</b> create downsampled versions of the same image. This means it’s ‘zoomed out’ from the original image - it has much less detail (1 pixel where the original might have 100 or 1000 pixels), but is also much smaller. Often a single GeoTIFF will have many overviews, to match different zoom levels. These add size to the overall file, but are able to be served much faster, since the renderer just has to return the values in the overview instead of figuring out how to represent 1000 different pixels as one.</p>
+                <p>These, along with compression of the data, are general best practices for enabling software to quickly access imagery. But they are even more important to enable the HTTP GET Range requests to work efficiently.</p>
+       
+                <h2>HTTP Get Range requests</h2>
+								<p>HTTP Version 1.1 introduced a very cool feature called Range requests. It comes into play in GET requests, when a client is asking a server for data. 
+									If the server advertises with an <code>Accept-Ranges: bytes</code> header in its response it is telling the client that bytes of data can be requested in parts, in whatever way the client wants. This is 
+                often called Byte Serving, and there’s a good <a href="https://en.wikipedia.org/wiki/Byte_serving">wikipedia article</a> explaining how it works. The client can request just the bytes that it needs from the server. On the broader web it is very useful for serving things like video, so clients don’t have to download the entire file to begin playing it.</p>
+                <p>The Range requests are an <i>optional</i> field, so web servers are not required to implement it. But most all the object storage options on the cloud (Amazon, Google, Microsoft, OpenStack etc) support the field on data stored on their servers. So most any data that is stored on the cloud is automatically able to serve up parts of itself, as long as clients know what to ask for.</p>
+                <h2>Bringing them together</h2>
+                <p>Describing the two technologies probably makes it pretty obvious how the two work together. The Tiling and Overviews in the GeoTIFF put the right structure on the files on the cloud so that the Range queries can request just the part of the file that is relevant. </p>
+                <p>Overviews come into play when the client wants to render a quick image of the whole file - it doesn’t have to download every pixel, it can just request the much smaller, already created, overview. The structure of the GeoTIFF file on an HTTP Range supporting server enables the client to easily find just the part of the whole file that is needed.</p> 
+                <p>Tiles come into play when some small portion of the overall file needs to be processed or visualized. This could be part of an overview, or it could be at full resolution. But the tile organizes all the relevant bytes of an area in the same part of the file, so the Range request can just grab what it needs. </p>
+                <p>If the GeoTIFF is not ‘cloud optimized’ with overviews and tiles then doing remote operations on the data will still work. But they may download the whole file or large portions of it when only a very small part of the data is actually needed. </p>
+
+                </section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<h2>Aliquam sed mauris</h2>
+							<p>Sed lorem ipsum dolor sit amet et nullam consequat feugiat consequat magna adipiscing tempus etiam dolore veroeros. eget dapibus mauris. Cras aliquet, nisl ut viverra sollicitudin, ligula erat egestas velit, vitae tincidunt odio.</p>
+							<ul class="actions">
+								<li><a href="#" class="button">Learn More</a></li>
+							</ul>
+						</section>
+						<section>
+							<h2>Etiam feugiat</h2>
+							<dl class="alt">
+								<dt>Address</dt>
+								<dd>1234 Somewhere Road &bull; Nashville, TN 00000 &bull; USA</dd>
+								<dt>Phone</dt>
+								<dd>(000) 000-0000 x 0000</dd>
+								<dt>Email</dt>
+								<dd><a href="#">information@untitled.tld</a></dd>
+							</dl>
+							<ul class="icons">
+								<li><a href="#" class="icon fa-twitter alt"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon fa-facebook alt"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon fa-instagram alt"><span class="label">Instagram</span></a></li>
+								<li><a href="#" class="icon fa-github alt"><span class="label">GitHub</span></a></li>
+								<li><a href="#" class="icon fa-dribbble alt"><span class="label">Dribbble</span></a></li>
+							</ul>
+						</section>
+						<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

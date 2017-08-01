@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Cloud Optimized GeoTIFF in depth</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1>Why Cloud Optimized GeoTIFF's?</h1>
+						<p>The advantages of using COG's</p>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Content -->
+							<section id="content" class="main">
+								<h2>Overview</h2>
+                <p>More and more geospatial data is migrating to the cloud, and it most often is stored on cloud-based object storage like <a href=”https://aws.amazon.com/s3/”>S3</a> or <a href=”https://cloud.google.com/storage/”>Google Cloud Storage</a>. Traditional GIS file formats can easily sit on the cloud, but serving up web map tiles or doing on the fly processing of the data are difficult to do efficiently with those formats. They often have to be fully downloaded to another location and then translated to an optimized format or stored in memory.</p>
+                <p>Cloud Optimized GeoTIFF’s enable efficient streaming of data, with some <a href=”in-detail.html”>smart technology</a>, to enable fully cloud-based geospatial workflows. Online imagery platforms like the <a href=”https://www.planet.com/explorer/”>Planet Platform</a> and <a href=”https://platform.digitalglobe.com/gbdx/”>GBDX</a> use them to provide imagery that gets processed on the fly. COG-aware software can stream just the portions of data that it needs, improving access times.</p>
+                <p>Newer scale out geospatial software like <a href=”http://geotrellis.io”>GeoTrellis</a>, <a href=”http://earthengine.google.com”>Google Earth Engine</a> and <a href=”https://gbdxdocs.digitalglobe.com/docs/idaho-course>IDAHO</a> also have potential to leverage COG’s directly in their architectures. Each processing node can stream the part of the COG that it needs to do on-the-fly geospatial processing.</p>
+                <p>The great thing about leveraging the GeoTIFF standard is that all kinds of legacy software is able to read it with no additional modifications. They won’t tap into streaming capabilities, but can easily download the whole dataset and read it, unlike various new imagery formats.</p>
+                <p>Providing data in the Cloud Optimized GeoTIFF format can help decrease how much data is copied. Since online software systems can stream the data they don’t need to keep their own copy of the data for efficient access, a common pattern today. And data providers do not need to provide multiple file formats, because legacy systems can read the same GeoTIFF that the online streaming software is. Data providers can just put up one version of their data, and multiple online software can all access it at the same time, with no additional copies for download purposes.</p>
+
+								
+                </section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<h2>Aliquam sed mauris</h2>
+							<p>Sed lorem ipsum dolor sit amet et nullam consequat feugiat consequat magna adipiscing tempus etiam dolore veroeros. eget dapibus mauris. Cras aliquet, nisl ut viverra sollicitudin, ligula erat egestas velit, vitae tincidunt odio.</p>
+							<ul class="actions">
+								<li><a href="#" class="button">Learn More</a></li>
+							</ul>
+						</section>
+						<section>
+							<h2>Etiam feugiat</h2>
+							<dl class="alt">
+								<dt>Address</dt>
+								<dd>1234 Somewhere Road &bull; Nashville, TN 00000 &bull; USA</dd>
+								<dt>Phone</dt>
+								<dd>(000) 000-0000 x 0000</dd>
+								<dt>Email</dt>
+								<dd><a href="#">information@untitled.tld</a></dd>
+							</dl>
+							<ul class="icons">
+								<li><a href="#" class="icon fa-twitter alt"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon fa-facebook alt"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon fa-instagram alt"><span class="label">Instagram</span></a></li>
+								<li><a href="#" class="icon fa-github alt"><span class="label">GitHub</span></a></li>
+								<li><a href="#" class="icon fa-dribbble alt"><span class="label">Dribbble</span></a></li>
+							</ul>
+						</section>
+						<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
