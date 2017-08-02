@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<!--
+	Stellar by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Provider's Guide to COG</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1>Providing data as Cloud Optimized GeoTIFF</h1>
+						<p>A guide for imagery providers</p>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Content -->
+							<section id="content" class="main">
+								<h3>Introduction</h3>
+                <p>Cloud Optimized GeoTIFF (COG) is a new way to produce data, enabling less duplication and innovative cloud-based workflows. 
+                   If you are a provider of imagery and like what you see from Cloud Optimized GeoTIFF this guide can help you with how to provide your data as COG. For
+                   additional background see the <a href="https://cholmes.github.io/stellar-jekyll-theme/why-cog.html">Why COG?</a> page.</p>
+                <h3>COG Advantages for Imagery Providers</h3>
+                <p>The main advantage to providing your data as Cloud Optimized GeoTIFF’s is to enable more cloud-centric workflows. Data on the cloud should not be copied many times, it should sit in one location and let everyone access from there. With COG this is much more likely, because a number of common geospatial workflows on the cloud can make use of it.</p>
+                <p>Using COG should actually save money. Download of data is one of the larger distribution costs for geospatial data, as cloud-hosting providers charge egress fees for any data leaving their network. COG-aware clients can download just the portion of the data they need, instead of larger files, so less bandwidth will often be consumed. Furthermore many users will be inclined to run their processing in the same cloud location as your data, as that allows the fastest access to the data. Most cloud providers don’t actually charge for bandwidth when the data is moving in the same zone, so you can save additional money due to that, especially if you encourage your users to run their processes and services in the same zone.</p>
+                <h3>Enabling Cloud Optimized GeoTiff’s</h3>
+                <p>In all likelihood GeoTIFF is already a data format that you make available to your users. Thankfully you don't need to make a fully new format - you just need to start formatting your existing GeoTIFF data in a COG compliant manner.</p> 
+                There are two main things to do to take advantage of Cloud Optimized GeoTIFF:</p>
+                <ol>
+                  <li>Format your data according to the COG best practices. GDAL is how the vast majority of data is created, and so likely you just have to tweak the parameters of your file creation. There are full details on the <a href=”https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF#HowtogenerateitwithGDAL”>GDAL wiki</a>, but the quick version of how to format your data is:
+                  <pre><code>gdal_translate in.tif out.tif -co TILED=YES -co COPY_SRC_OVERVIEWS=YES -co COMPRESS=DEFLATE</code></pre>
+                  This will set the data structure properly to be able to be read by any COG-aware software.
+                  </li>
+                  <li>The other thing to do is to make your data available on a web server that supports HTTP range queries. By far the easiest way to do this is just by distributing the data on Amazon S3, Google Cloud Storage, or Azure. And most modern web servers will also work out of the box, so chances are this part will 'just work'. If you have trouble with it then get in touch. You can put most any authorization protocol you want on top of it, see the guide on <a href="auth-guide.html">Auth</a> for more information on the options.
+                  </li>
+               <ol>
+
+                </section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<h2>Aliquam sed mauris</h2>
+							<p>Sed lorem ipsum dolor sit amet et nullam consequat feugiat consequat magna adipiscing tempus etiam dolore veroeros. eget dapibus mauris. Cras aliquet, nisl ut viverra sollicitudin, ligula erat egestas velit, vitae tincidunt odio.</p>
+							<ul class="actions">
+								<li><a href="#" class="button">Learn More</a></li>
+							</ul>
+						</section>
+						<section>
+							<h2>Etiam feugiat</h2>
+							<dl class="alt">
+								<dt>Address</dt>
+								<dd>1234 Somewhere Road &bull; Nashville, TN 00000 &bull; USA</dd>
+								<dt>Phone</dt>
+								<dd>(000) 000-0000 x 0000</dd>
+								<dt>Email</dt>
+								<dd><a href="#">information@untitled.tld</a></dd>
+							</dl>
+							<ul class="icons">
+								<li><a href="#" class="icon fa-twitter alt"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon fa-facebook alt"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon fa-instagram alt"><span class="label">Instagram</span></a></li>
+								<li><a href="#" class="icon fa-github alt"><span class="label">GitHub</span></a></li>
+								<li><a href="#" class="icon fa-dribbble alt"><span class="label">Dribbble</span></a></li>
+							</ul>
+						</section>
+						<p class="copyright">&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
