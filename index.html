@@ -47,17 +47,17 @@
 										<header class="major">
 											<h2>About</h2>
 										</header>
-										<p>A Cloud Optimized GeoTIFF (COG) is a regular GeoTIFF file, aimed at being hosted on a HTTP file server, with an internal organization 
-											enables more efficient workflows on the cloud. It does this by leveraging the ability of clients issuing ​<a href="https://tools.ietf.org/html/rfc7233">HTTP GET range 
+										<p>A Cloud Optimized GeoTIFF (COG) is a regular GeoTIFF file, aimed at being hosted on a HTTP file server, with an internal organization
+											enables more efficient workflows on the cloud. It does this by leveraging the ability of clients issuing ​<a href="https://tools.ietf.org/html/rfc7233">HTTP GET range
 											requests</a> to ask for just the parts of a file they need.</p>
 										<ul class="actions">
-											<li><a href="in-detail.html" class="button">Learn More</a></li>
+											<li><a href="in-depth.html" class="button">Learn More</a></li>
 										</ul>
 									</div>
 									<span class="image"><img src="images/pic01.jpg" alt="" /></span>
 								</div>
 							</section>
-						
+
 	<!-- First Section -->
 							<section id="why" class="main special">
 								<header class="major">
@@ -77,7 +77,7 @@
 									<li>
 										<span class="icon major style5 fa-diamond"></span>
 										<h3>Legacy Compatibility</h3>
-										<p>Traditional GIS software is able to treat Cloud-Optimized GeoTIFF’s just like normal GeoTIFF’s, so data providers need only produce one format</p>
+										<p>Traditional GIS software is able to treat Cloud Optimized GeoTIFF’s just like normal GeoTIFF’s, so data providers need only produce one format</p>
 									</li>
 								</ul>
 								<footer class="major">
@@ -86,14 +86,14 @@
 									</ul>
 								</footer>
 							</section>
-	
+
 
 												<!-- Get Started -->
 							<section id="in-detail" class="main special">
 								<header class="major">
 									<h2>How does it work?</h2>
 									<p>Cloud Optimized GeoTIFF rely on two complementary pieces of technology.</p>
-									<p>The first is the ability of a GeoTIFF to not only store the raw pixels of the image, but to also organize those pixels in particular ways. The second is HTTP GET range requests, that let clients 
+									<p>The first is the ability of a GeoTIFF to not only store the raw pixels of the image, but to also organize those pixels in particular ways. The second is HTTP GET range requests, that let clients
 										ask for just the portions of a file that they need. Together these enable fully online processing of data by COG-aware clients, as they can stream the right parts of the GeoTIFF as they need it, instead of having to download the whole file. </p>
 								</header>
 								<footer class="major">
@@ -103,7 +103,7 @@
 									</ul>
 								</footer>
 							</section>
-						
+
 
 							<!-- Get Started -->
 							<section id="cta" class="main special">
@@ -114,14 +114,14 @@
 								<footer class="major">
 									<ul class="actions">
 										<li><a href="providers-guide.html" class="button special">Data Providers</a></li>
-										<li><a href="developer-guide.html" class="button special">Developers</a></li>
+										<li><a href="developers-guide.html" class="button special">Developers</a></li>
 										<li><a href="#implementations" class="button special">Users</a></li>
 									</ul>
 								</footer>
-							</section>			
-						
-						
-					
+							</section>
+
+
+
 
 						<!-- implementation Section -->
 							<section id="implementations" class="main">
@@ -130,26 +130,27 @@
 									<p>COG is just getting started, so many software and data providers still do not fully support it, and indeed many have likely never heard of it. You can help this change quickly, by sharing this website with those who should implement it. As the list of providers grows this page will evolve to more details on how to use it.</p>
 								</header>
 								<ul class="statistics">
-									<li class="style1">
-										<span class="icon fa-code-fork"></span>
-										<strong>5,120</strong> Etium
-									</li>
-									<li class="style2">
-										<span class="icon fa-folder-open-o"></span>
-										<strong>8,192</strong> Magnum
+									<li class="style5">
+										<img src="https://www.planet.com/assets/logos/logo.svg" alt="Planet" width="150">
+										<!--span class="icon fa-code-fork"></span>
+										<strong>5,120</strong-->
 									</li>
 									<li class="style3">
-										<span class="icon fa-signal"></span>
-										<strong>2,048</strong> Tempus
+										<img src="https://avatars2.githubusercontent.com/u/3129444?v=4&s=140" alt="Planet" width="70">
+
 									</li>
 									<li class="style4">
-										<span class="icon fa-laptop"></span>
-										<strong>4,096</strong> Aliquam
+										<img src="https://partner.digitalglobe.com/sites/all/themes/dg_extranet/images/community_logo.png" alt="DigitalGlobe" width="150">
+
+									</li>
+
+									<li class="style3">
+										<img src="https://eos.com/wp-content/themes/eos/images/main/logo-light-home.svg" alt="EOS" width="150" height="65">
 									</li>
 									<li class="style5">
-										<span class="icon fa-diamond"></span>
-										<strong>1,024</strong> Nullam
+										<img src="http://farmshots.com/images/logo.svg" alt="FarmShots" width="150" height="70">
 									</li>
+
 								</ul>
 								<h2>Software</h2>
 								<p>Cloud Optimized GeoTIFFs started as a GDAL project, leveraging the <a href=”http://gdal.org/cpl__vsi_8h.html#a4f791960f2d86713d16e99e9c0c36258”>vsicurl driver</a>, so they are well supported. See the <a href=”https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF#HowtoreaditwithGDAL”>GDAL Wiki</a> for how to read COG files with GDAL.</p>
@@ -160,13 +161,13 @@
 									<li><a href=”https://eosda.com/”>Earth Observing System</a>’s Engine and Land Viewer are both able to leverage Cloud Optimized GeoTIFFs for live web tile serving and on the fly band math.</li>
 									<li><a href=”http://geotrellis.io”>GeoTrellis</a> has not yet implemented, but has <a href=”https://github.com/locationtech/geotrellis/issues/2284”>detailed their plans</a> to do so.</li>
 								</ul>
-							
+
 								<h2>Data Providers</h2>
 								<ul>
 									<li><a href=”http://planet.com”>Planet</a> provides all its data (from RapidEye, PlanetScope and soon SkySat satellites) as Cloud Optimized GeoTIFFs.</li>
 									<li><a href=”http://digitalglobe.com”>DigitalGlobe</a>’s <a href=”gbdx.geobigdata.io”>GBDX</a> data is available as Cloud Optimized GeoTIFF, for all processing done on the platform.</li>
-									</ul>	
-								
+									</ul>
+
 								<footer class="major">
 									<ul class="actions">
 										<li><a href="generic.html" class="button">Learn More</a></li>
@@ -181,10 +182,10 @@
 				<!-- Footer -->
 					<footer id="footer">
 						<section>
-							<h2>Aliquam sed mauris</h2>
-							<p>Sed lorem ipsum dolor sit amet et nullam consequat feugiat consequat magna adipiscing tempus etiam dolore veroeros. eget dapibus mauris. Cras aliquet, nisl ut viverra sollicitudin, ligula erat egestas velit, vitae tincidunt odio.</p>
+							<h2>Pull Requests Accepted</h2>
+							<p>The Cloud Optimized GeoTIFF project and website is fully community driven. If something is not right on the website, or if you want to contribute a tutorial, add your software to the implementation list or tell the world about the awesome data you are making available as COG's then please contribute on GitHub.</p>
 							<ul class="actions">
-								<li><a href="generic.html" class="button">Learn More</a></li>
+								<li><a href="https://github.com/cholmes/cogeo.org/" class="button">Contribute</a></li>
 							</ul>
 						</section>
 						<section>
