@@ -136,7 +136,7 @@
 										<strong>5,120</strong-->
 									</li>
 									<li class="style3">
-										<img src="https://avatars2.githubusercontent.com/u/3129444?v=4&s=140" alt="Planet" width="70">
+										<img src="https://user-images.githubusercontent.com/407017/31298175-c0e81f88-aa9d-11e7-82bb-66aecd0eaa76.png" alt="GDAL" width="80">
 
 									</li>
 									<li class="style4">
@@ -144,26 +144,35 @@
 
 									</li>
 
-									<li class="style3">
-										<img src="https://eos.com/wp-content/themes/eos/images/main/logo-light-home.svg" alt="EOS" width="150" height="65">
+									<li class="style2">
+										<img src="https://i.stack.imgur.com/rpBtJ.png" alt="GeoServer" width="120" >
 									</li>
 									<li class="style5">
 										<img src="http://farmshots.com/images/logo.svg" alt="FarmShots" width="150" height="70">
 									</li>
 
 								</ul>
+
 								<h2>Software</h2>
-								<p>Cloud Optimized GeoTIFFs started as a GDAL project, leveraging the <a href=”http://gdal.org/cpl__vsi_8h.html#a4f791960f2d86713d16e99e9c0c36258”>vsicurl driver</a>, so they are well supported. See the <a href=”https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF#HowtoreaditwithGDAL”>GDAL Wiki</a> for how to read COG files with GDAL.</p>
+								<p>Cloud Optimized GeoTIFFs started as a <a href="http://gdal.org">GDAL project</a>, leveraging the <a href=”http://gdal.org/cpl__vsi_8h.html#a4f791960f2d86713d16e99e9c0c36258”>vsicurl driver</a>, so both reading and writing COG's is well supported. See the <a href=”https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF#HowtoreaditwithGDAL”>GDAL Wiki</a> for how to read COG files with GDAL.</p>
 								<p>Other software providers are less clear, but we have heard prototypes and first implementations from a number of them. If you are a software provider feel free to update this section.</p>
 								<ul>
+									<li><a href="http://qgis.org">QGIS</a> can read Cloud Optimized GeoTIFF's using Virtual Raster Builder with a vsicurl file format to refer to the online URL.</li>
+									<li><a href="https://github.com/mojodna/marblecutter">Marblecutter</a> serves web tiles from Cloud Optimized GeoTIFF's, completely on the fly. You can see it in action at <a href="http://openaerialmap.org">OpenAerialMap</a>, as all tiles are rendered by an early version.</li>
 									<li><a href="http://farmshots.com/">Farmshots</a> builds agriculture analytics on top of Planet’s Cloud Optimized GeoTIFF’s, pulling in just the needed field data and serving it up live to their customers.</li>
 									<li><a href="http://digitalglobe.com">DigitalGlobe</a> has built a project called <a href="https://gbdxdocs.digitalglobe.com/docs/idaho-course">IDAHO</a> that can read COG files and perform on the fly band math analysis. </li>
+									<li><a href="http://geoserver.org">GeoServer</a> can use a new GeoTools community module named 's3-geotiff' to use COG's as a datastore. Advanced GeoServer users who know how to add new datastores can find it in the Boundless <a href="https://repo.boundlessgeo.com/artifactory/list/snapshot/org/geotools/gt-s3-geotiff/">nightly repo</a> (use the s3:// url form for it to work).</a>
 									<li><a href="https://eosda.com/">Earth Observing System</a>’s Engine and Land Viewer are both able to leverage Cloud Optimized GeoTIFFs for live web tile serving and on the fly band math.</li>
 									<li><a href="http://geotrellis.io">GeoTrellis</a> has not yet implemented, but has <a href="https://github.com/locationtech/geotrellis/issues/2284">detailed their plans</a> to do so.</li>
 								</ul>
 
+								Most any software that relies on GDAL should support Cloud Optimized GeoTIFF's without much effort. Things like
+								MapServer, Safe FME, ArcGIS and ENVI jump to mind. The fact that they and others aren't on this list mostly means 
+								no one has tested and got them working yet. Feel free to submit a <a href="https://github.com/cholmes/www.cogeo.org/pulls">pull request</a> to add any software confirmed to support COG's (links to documentation appreciated!).
+
 								<h2>Data Providers</h2>
 								<ul>
+									<li><a href="http://openaerialmap.org">OpenAerialMap</a> stores all new imagey as Cloud Optimized GeoTIFF's, and also provides a service that takes uploaded data and turns it in to AWS S3 hosted COG's. The only constraint is that data uploaded must be openly licensed.</li>
 									<li><a href="http://planet.com">Planet</a> provides all its data (from RapidEye, PlanetScope and soon SkySat satellites) as Cloud Optimized GeoTIFFs.</li>
 									<li><a href="http://digitalglobe.com">DigitalGlobe</a>’s <a href="http://gbdx.geobigdata.io">GBDX</a> data is available as Cloud Optimized GeoTIFF, for all processing done on the platform.</li>
 								</ul>
