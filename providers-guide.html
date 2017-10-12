@@ -41,7 +41,7 @@
                 <p>In all likelihood GeoTIFF is already a data format that you make available to your users. Thankfully you don't need to make a fully new format - you just need to start formatting your existing GeoTIFF data in a COG compliant manner.</p> 
                 There are two main things to do to take advantage of Cloud Optimized GeoTIFF:</p>
                 <ol>
-                  <li>Format your data according to the COG best practices. GDAL is how the vast majority of data is created, and so likely you just have to tweak the parameters of your file creation. There are full details on the <a href=”https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF#HowtogenerateitwithGDAL”>GDAL wiki</a>, but the quick version of how to format your data is:
+                  <li>Format your data according to the COG best practices. GDAL is how the vast majority of data is created, and so likely you just have to tweak the parameters of your file creation. There are full details on the <a href="https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF#HowtogenerateitwithGDAL">GDAL wiki</a>, but the quick version of how to format your data is:
                   <pre><code>gdal_translate in.tif out.tif -co TILED=YES -co COPY_SRC_OVERVIEWS=YES -co COMPRESS=DEFLATE</code></pre>
                   This will set the data structure properly to be able to be read by any COG-aware software.
                   </li>
