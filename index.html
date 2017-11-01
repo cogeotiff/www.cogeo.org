@@ -164,7 +164,8 @@
 									<li><a href="http://digitalglobe.com">DigitalGlobe</a> has built a project called <a href="https://gbdxdocs.digitalglobe.com/docs/idaho-course">IDAHO</a> that can read COG files and perform on the fly band math analysis. </li>
 									<li><a href="http://geoserver.org">GeoServer</a> can use a new GeoTools community module named 's3-geotiff' to use COG's as a datastore. Advanced GeoServer users who know how to add new datastores can find it in the Boundless <a href="https://repo.boundlessgeo.com/artifactory/list/snapshot/org/geotools/gt-s3-geotiff/">nightly repo</a> (use the s3:// url form for it to work).</a>
 									<li><a href="https://eosda.com/">Earth Observing System</a>’s Engine and Land Viewer are both able to leverage Cloud Optimized GeoTIFFs for live web tile serving and on the fly band math.</li>
-									<li><a href="http://geotrellis.io">GeoTrellis</a> has not yet implemented, but has <a href="https://github.com/locationtech/geotrellis/issues/2284">detailed their plans</a> to do so.</li>
+                  <li><a href="http://geotrellis.io">GeoTrellis</a> has not yet implemented, but has <a href="https://github.com/locationtech/geotrellis/issues/2284">detailed their plans</a> to do so.</li>
+                  <li><a href="http://www.orfeo-toolbox.org">Orfeo ToolBox</a> All Orfeo ToolBox applications can read cloud optimized geotiffs through GDAL (simply prefix file url with /vsicurl/), and Monteverdi, the Orfeo ToolBox image viewer, can navigate in remote cloud optimized geotiff out of the box.</li>
 								</ul>
 
 								<p>Most any software that relies on GDAL should support Cloud Optimized GeoTIFF's without much effort. Things like
