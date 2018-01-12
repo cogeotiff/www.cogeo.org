@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="author" content="">
+    <meta name="google-site-verification" content="PmJLwJHYDYWWI6vGS-Al2bLLsjYemgdoIGF5yx9HzTk" />
+  
+    <title>COG Map</title>
+  
+    <link rel="stylesheet" href="https://openlayers.org/en/v4.6.4/css/ol.css" type="text/css">
+    <script src="https://openlayers.org/en/v4.6.4/build/ol.js"></script>
+
+
+    
+  </head>
+  <body>
+
+
+        <div id="map" class="map" style="width: 100%; height: 100%; border: 1px solid #ccc;"></div>
+
+        <p><input type="checkbox" id="labels" name="labels" onClick="toggleControl(this);" checked="true"> Labels</p> 
+
+      </div>
+ 
+<!-- /container -->
+
+
+
+    <script>
+      var labels = new ol.layer.Tile({
+                    title: 'Labels',
+                    source: new ol.source.XYZ({
+                      
+                      url: 'https://{1-4}.basemaps.cartocdn.com/dark_only_labels/{z}/{x}/{y}.png'
+                   })
+                  });
+      var map = new ol.Map({
+        target: 'map',
+        layers: [
+       
+          new ol.layer.Tile({
+
+              source: new ol.source.XYZ({
+              url: 'https://{1-4}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png'
+            })
+          }),
+          
+          new ol.layer.Tile({
+            title: 'OAM',
+            type: 'base',
+            source: new ol.source.XYZ({
+              url: 'https://bstlgagxwg.execute-api.us-east-1.amazonaws.com/production/tiles/{z}/{x}/{y}.png?url=http://oin-hotosm.s3.amazonaws.com/5a0603e131eff4000c3805ac/0/5548e494-52c6-4bbc-bc85-eadc209d880e.tif'
+            })
+          }),
+          labels
+        ],
+
+   
+        view: new ol.View({
+          center: ol.proj.transform([124.97823103726, 10.91685], 'EPSG:4326', 'EPSG:3857'),
+          zoom: 15
+        })
+      });
+
+      function toggleControl(element){
+         
+          labels.setVisible(element.checked);
+         
+         
+        }
+    </script>
+  </body>
+</html>
