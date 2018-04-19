@@ -52,7 +52,6 @@
 								<p>If you leave ‘Load into canvas when finished’ checked, then after a bit of processing time you should see your COG displayed as an active layer in QGIS.</p>
 
 								<img src="https://user-images.githubusercontent.com/407017/31321403-7e180814-ac3a-11e7-8696-c3b177031b50.png" style="width: 90%;display: block;margin: auto;"/><br/>
-								<p>Transparency could be improved, hopefully a QGIS or GDAL expert can help improve this tutorial.</p>
 								<p>Admittedly this looks about the same as downloading and using a GeoTIFF locally. But the power of the Cloud Optimized GeoTIFF becomes apparent when you zoom in. On fast connections it should take less than a second to redraw, at full resolutions. This is a little slower than downloading the whole file and loading it up locally.</p>
 								<img src="https://user-images.githubusercontent.com/407017/31321531-7dbd5ee4-ac3c-11e7-896c-c958fec356ae.png" style="width: 90%;display: block;margin: auto;"/><br/>
 								<p>So you can try to hit the download button from OpenAerialMap to compare the performance. But what you’ll find there is a 1.2 gigabyte file that takes quite awhile to download on all but the fastest connections. The advantage of using the Cloud Optimized GeoTIFF is that you can zoom to anywhere within seconds, instead of waiting for a huge GeoTIFF to download. This access pattern saves everyone time and money, by getting to people only the data they need to do their task. And it enables access to fully analytic data, not just the visualization that web tiles allow.</p>
@@ -63,8 +62,6 @@
 								<ul>
 									<li><b>Handle COG's better</b> - The mechanics to open Cloud Optimized GeoTIFF's are all there, but the GUI components to open a raster assume it is a file and only let you browse your local files. There should be some option to open raster files that are online, and automatically use /vsicurl/. The cloud support in GDAL is <a href="http://erouault.blogspot.com/2017/10/gdal-and-cloud-storage.html">continually advancing</a>, and QGIS would be a great front-end for cloud data, if it changed a few assumptions. A nice cloud raster plugin would be a great first step, and eventually rework the core raster layer options. </li>
 									<li><b>Better Refreshing</b> - When zooming in on a local raster there is always a downsampled version of the pixels until the higher resolution bit loads, leading to a smooth experience. There's something with COG's or VRT's that makes for a white screen in between zooms. This could be something in the underlying GDAL, but would be good to start and see if there's a QGIS fix.</li>
-									<li><b>Tranparency</b> - This may just be a configuration problem, reflecting the author's naivety, but if someone
-									could get it so COG's on VRT's can have proper transparency that would be great. Can just <a href="https://github.com/cholmes/www.cogeo.org/issues">open an issue</li>
 									
 								</ul>
 							</section>
