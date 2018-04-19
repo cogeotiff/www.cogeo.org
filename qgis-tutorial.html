@@ -48,7 +48,7 @@
 									<code>/vsicurl/http://oin-hotosm.s3.amazonaws.com/59d33df023c8440011d7b26d/0/b378087a-c2a5-43a0-abec-71fcfb051150.tif</code>
 								Specify an output file where you want to save the small file that contains the pointer to the online COG.</p>
 								<img src="https://user-images.githubusercontent.com/407017/31321282-51d87b82-ac38-11e7-9ff9-00a8766d138c.png" style="width: 80%; max-width: 370px; display: block;margin: auto;"/><br/>
-								<p>You can leave the rest of the defaults as is, or try out things like reprojection. For this exercise we are just using one COG, but you could just as easily point at multiple ones online, just put a comma between each (with no space). And be sure to prepend <i><b>/vsicurl/</i></b> onto each of them.</p>
+								<p>You can leave the rest of the defaults as is, or try out things like reprojection. If you want transparency you can select the 'Source No Data' option, and it will use that color value as 'transparent'. 0 is 'real black', which can often be transparent, but it has an annoying side effect of making pure black pixels in your image also transparent. For this exercise we are just using one COG, but you could just as easily point at multiple ones online, just put a comma between each (with no space). And be sure to prepend <i><b>/vsicurl/</i></b> onto each of them.</p>
 								<p>If you leave ‘Load into canvas when finished’ checked, then after a bit of processing time you should see your COG displayed as an active layer in QGIS.</p>
 
 								<img src="https://user-images.githubusercontent.com/407017/31321403-7e180814-ac3a-11e7-8696-c3b177031b50.png" style="width: 90%;display: block;margin: auto;"/><br/>
