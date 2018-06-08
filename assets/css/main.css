@@ -1623,11 +1623,11 @@
 	}
 
 	body {
-		background-color: #935d8c;
-		background-image: url("images/overlay.png"), -moz-linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
-		background-image: url("images/overlay.png"), -webkit-linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
-		background-image: url("images/overlay.png"), -ms-linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
-		background-image: url("images/overlay.png"), linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
+		background-color: #082151;
+		background-image: url("images/overlay.png"), -moz-linear-gradient(45deg, #246A73 15%, #082151 85%);
+		background-image: url("images/overlay.png"), -webkit-linear-gradient(45deg, #246A73 15%, #082151 85%);
+		background-image: url("images/overlay.png"), -ms-linear-gradient(45deg, #246A73 15%, #082151 85%);
+		background-image: url("images/overlay.png"), linear-gradient(45deg, #246A73 15%, #082151 85%);
 	}
 
 		body.is-loading *, body.is-loading *:before, body.is-loading *:after {
@@ -2913,23 +2913,23 @@
 		}
 
 			.statistics li.style1 {
-				background-color: #efa8b0;
+				background-color: #DDBEA8;
 			}
 
 			.statistics li.style2 {
-				background-color: #c79cc8;
+				background-color: #246A73;
 			}
 
 			.statistics li.style3 {
-				background-color: #a89cc8;
+				background-color: #368F8B;
 			}
 
 			.statistics li.style4 {
-				background-color: #9bb2e1;
+				background-color: #F3DFC1;
 			}
 
 			.statistics li.style5 {
-				background-color: #8cc9f0;
+				background-color: #082151;
 			}
 
 			.statistics li strong, .statistics li b {
