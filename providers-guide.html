@@ -45,7 +45,7 @@
                   <pre><code>gdal_translate in.tif out.tif -co TILED=YES -co COPY_SRC_OVERVIEWS=YES -co COMPRESS=DEFLATE</code></pre>
                   This will set the data structure properly to be able to be read by any COG-aware software.
                   </li>
-                  <li>The other thing to do is to make your data available on a web server that supports HTTP range queries. By far the easiest way to do this is just by distributing the data on Amazon S3, Google Cloud Storage, or Azure. And most modern web servers will also work out of the box, so chances are this part will 'just work'. If you have trouble with it then get in touch. You can put most any authorization protocol you want on top of it, see the guide on <a href="auth-guide.html">Auth</a> for more information on the options.
+                  <li>The other thing to do is to make your data available on a web server that supports HTTP range queries. By far the easiest way to do this is just by distributing the data on Amazon S3, Google Cloud Storage, or Azure. And most modern web servers will also work out of the box, so chances are this part will 'just work'. If you have trouble with it then get in touch. You can put most any authorization protocol you want on top of it, see the <a href="http://www.gdal.org/gdal_virtual_file_systems.html#gdal_virtual_file_systems_network">GDAL VSI docs</a> for lots of details, and we hope to get a nicer guide to the options.
                   </li>
                <ol>
 
