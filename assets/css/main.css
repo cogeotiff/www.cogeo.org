@@ -2907,6 +2907,8 @@
 			-webkit-flex: 1;
 			-ms-flex: 1;
 			flex: 1;
+                        height: 175px;
+                        line-height: 175px;
 			padding: 1.5em;
 			color: #ffffff;
 			text-align: center;
