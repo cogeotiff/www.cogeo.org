@@ -52,22 +52,22 @@
 
 								<h3>QGis before version 3.2</h3>
 								<p>The key to reading a Cloud Optimized GeoTIFF with QGIS is the ‘vsicurl’ virtual file system of GDAL. Normally QGIS will open any raster file with GDAL, and an online file read with vsicurl should be no different, but unfortunately there is a hard coded assumption in the QGIS GUI that if you’re adding a raster layer that is not WMS or WCS then of course it must be a file.</p>
-								<img src="https://user-images.githubusercontent.com/407017/31320826-f893f856-ac2f-11e7-914f-41aa825203a4.gif" style="width: 90%;display: block;margin: auto;"/><br/>
+								<img src="https://user-images.githubusercontent.com/407017/31320826-f893f856-ac2f-11e7-914f-41aa825203a4.gif" style="width: 70%;display: block;margin: auto;"/><br/>
 								<p>Thankfully there is a way around it, with another great feature of GDAL - Virtual Rasters (VRT’s). And QGIS has a great little tool to build a virtual raster.</p>
 
 								<p>We want to create our Virtual Raster (VRT) in QGIS. To do this make sure you have the <a href="https://docs.qgis.org/2.2/en/docs/user_manual/plugins/plugins_gdaltools.html">GDAL Tools Plugin</a> installed in QGIS (it should ship standard in most distributions). And then navigate to <i>Raster -> Miscellaneous -> Build Virtual Raster (Catalog)</i>.</p>
-								<img src="https://user-images.githubusercontent.com/407017/31321202-be8bbc8c-ac36-11e7-9c8c-ddd7ade435bf.png" style="width: 80%; max-width: 450px; display: block;margin: auto;"/><br/>
+								<img src="https://user-images.githubusercontent.com/407017/31321202-be8bbc8c-ac36-11e7-9c8c-ddd7ade435bf.png" style="width: 70%; max-width: 450px; display: block;margin: auto;"/><br/>
 								<p>When you click on that it should open a dialog box that helps you create a VRT to read your cloud optimized geotiff. The key bit to make it work is to prepend <i><b>/vsicurl/</i></b> before your pasted in URL from the link location. So for our link the ‘Input files’ field should look like:
 									<code>/vsicurl/http://oin-hotosm.s3.amazonaws.com/59d33df023c8440011d7b26d/0/b378087a-c2a5-43a0-abec-71fcfb051150.tif</code>
 								Specify an output file where you want to save the small file that contains the pointer to the online COG.</p>
-								<img src="https://user-images.githubusercontent.com/407017/31321282-51d87b82-ac38-11e7-9ff9-00a8766d138c.png" style="width: 80%; max-width: 370px; display: block;margin: auto;"/><br/>
+								<img src="https://user-images.githubusercontent.com/407017/31321282-51d87b82-ac38-11e7-9ff9-00a8766d138c.png" style="width: 70%; max-width: 370px; display: block;margin: auto;"/><br/>
 								<p>You can leave the rest of the defaults as is, or try out things like reprojection. If you want transparency you can select the 'Source No Data' option, and it will use that color value as 'transparent'. 0 is 'real black', which can often be transparent, but it has an annoying side effect of making pure black pixels in your image also transparent. For this exercise we are just using one COG, but you could just as easily point at multiple ones online, just put a comma between each (with no space). And be sure to prepend <i><b>/vsicurl/</i></b> onto each of them.</p>
 								<p>If you leave ‘Load into canvas when finished’ checked, then after a bit of processing time you should see your COG displayed as an active layer in QGIS.</p>
-								<img src="https://user-images.githubusercontent.com/407017/31321403-7e180814-ac3a-11e7-8696-c3b177031b50.png" style="width: 90%;display: block;margin: auto;"/><br/>
+								<img src="https://user-images.githubusercontent.com/407017/31321403-7e180814-ac3a-11e7-8696-c3b177031b50.png" style="width: 70%;display: block;margin: auto;"/><br/>
 
 								<h2>COG versus local geotiff file</h2>
 								<p>Admittedly this looks about the same as downloading and using a GeoTIFF locally. But the power of the Cloud Optimized GeoTIFF becomes apparent when you zoom in. On fast connections it should take less than a second to redraw, at full resolutions. This is a little slower than downloading the whole file and loading it up locally.</p>
-								<img src="https://user-images.githubusercontent.com/407017/31321531-7dbd5ee4-ac3c-11e7-896c-c958fec356ae.png" style="width: 90%;display: block;margin: auto;"/><br/>
+								<img src="https://user-images.githubusercontent.com/407017/31321531-7dbd5ee4-ac3c-11e7-896c-c958fec356ae.png" style="width: 70%;display: block;margin: auto;"/><br/>
 								<p>So you can try to hit the download button from OpenAerialMap to compare the performance. But what you’ll find there is a 1.2 gigabyte file that takes quite awhile to download on all but the fastest connections. The advantage of using the Cloud Optimized GeoTIFF is that you can zoom to anywhere within seconds, instead of waiting for a huge GeoTIFF to download. This access pattern saves everyone time and money, by getting to people only the data they need to do their task. And it enables access to fully analytic data, not just the visualization that web tiles allow.</p>
 							</section>
 
