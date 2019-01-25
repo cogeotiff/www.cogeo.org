@@ -69,9 +69,7 @@
 								<h2>Call for Help - QGIS Developers</h2>
 								<p>If you are a developer there’s a couple things that would make for much nicer COG support in QGIS, and as an open source project anyone can contribute. Hopefully some of the core developers of QGIS are able to help out with these tasks.</p>
 								<ul>
-									<li><b>Handle COG's better</b> - The mechanics to open Cloud Optimized GeoTIFF's are all there, but the GUI components to open a raster assume it is a file and only let you browse your local files. There should be some option to open raster files that are online, and automatically use /vsicurl/. The cloud support in GDAL is <a href="http://erouault.blogspot.com/2017/10/gdal-and-cloud-storage.html">continually advancing</a>, and QGIS would be a great front-end for cloud data, if it changed a few assumptions. A nice cloud raster plugin would be a great first step, and eventually rework the core raster layer options. </li>
 									<li><b>Better Refreshing</b> - When zooming in on a local raster there is always a downsampled version of the pixels until the higher resolution bit loads, leading to a smooth experience. There's something with COG's or VRT's that makes for a white screen in between zooms. This could be something in the underlying GDAL, but would be good to start and see if there's a QGIS fix.</li>
-
 								</ul>
 							</section>
 
