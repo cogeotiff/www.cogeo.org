@@ -31,34 +31,42 @@
 						<!-- Content -->
 							<section id="content" class="main">
 								<h3>Introduction</h3>
-                <p>This guide will eventually be a stand alone explanation for developers on using and producing Cloud Optimized GeoTIFF's. If you are interested in 
+                <p>This guide will eventually be a stand alone explanation for developers on using and producing Cloud Optimized GeoTIFF's. If you are interested in
                 contributing then please make pull requests on the <a href="https://github.com/cholmes/www.cogeo.org">Github Project</a>. In the meantime this document will just link to a few other resources</p>
-                <h3>Reading a Cloud Optimized GeoTIFF</h3>
+                
+								<h3>Reading a Cloud Optimized GeoTIFF</h3>
                 <p>The easiest way to read a COG in a way that takes advantage of its unique properties is to use GDAL and its <a href="http://gdal.org/cpl__vsi_8h.html#a4f791960f2d86713d16e99e9c0c36258">VSI Curl</a> functionality. See the GDAL Wiki on Cloud Optimized GeoTIFF in its <a href="https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF#HowtoreaditwithGDAL">How to read it with GDAL</a> section. A majority of geospatial software in the world uses GDAL as a library, so incorporating it is likely the fastest way to incorporate COG reading in to your software.</p>
                 <p><a href="http://planet.com">Planet</a> produces all its data as COG, and has a little tutorial on how to <a href="https://www.planet.com/docs/guides/quickstart-subarea/">download part of an image</a> using VSI Curl. Most of the tutorial is specific to working with the Planet API, but it shows the use of GDAL Warp with a COG to extract a single farm field from a larger image.
-                <h3>How to generate a Cloud Optimized GeoTIFF</h3>
-                <p>Also on the GDAL wiki page on COG is a section on <a href="https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF#HowtogenerateitwithGDAL">How to generate it with GDAL</a>. For quick reference the one liner is:  
+
+								<h3>How to generate a Cloud Optimized GeoTIFF</h3>
+                <p>Also on the GDAL wiki page about COG, there is a section on <a href="https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF#HowtogenerateitwithGDAL">How to generate it with GDAL</a>. For quick reference the one liner is:
                 	<pre><code>gdal_translate in.tif out.tif -co TILED=YES -co COPY_SRC_OVERVIEWS=YES -co COMPRESS=DEFLATE</code></pre>
                 </p>
+								<p>or you can use <a href="https://github.com/cogeotiff/rio-cogeo">rio-cogeo</a> plugin:
+									<pre><code>$ rio cogeo create in.tif out.tif --cog-profile deflate</code></pre>
+								</p> 
                 <p>Many other geospatial software should also be able to add the proper overviews and tiles. Please contribute examples!</p>
-                <h3>Testing your Cloud Optimized GeoTIFF's</h3>
-                <p>The <a class="ext-link" href="https://svn.osgeo.org/gdal/trunk/gdal/swig/python/samples/validate_cloud_optimized_geotiff.py"><span class="icon">​</span>validate_cloud_optimized_geotiff.py</a> script can be used to check that a (GeoTIFF) file follows the above described file structure
+                
+								<h3>Testing your Cloud Optimized GeoTIFF's</h3>
+                <p>The <a class="ext-link" href="https://raw.githubusercontent.com/vincentsarago/gdal/master/gdal/swig/python/samples/validate_cloud_optimized_geotiff.py"><span class="icon">​</span>validate_cloud_optimized_geotiff.py</a> script can be used to check that a (GeoTIFF) file follows the above described file structure
                 </p><p>
-                <pre><code>$ python validate_cloud_optimized_geotiff.py test.tif</code></pre>
-                <p>or</p>
-				<pre><code>$ python
+                <pre><code>$ python validate_cloud_optimized_geotiff.py test.tif
+or
+$ python
 import validate_cloud_optimized_geotiff.py
-validate_cloud_optimized_geotiff.validate('test.tif')</code></pre>
-				</p>
-				<p><a href="http://radiant.earth">Radiant.Earth</a> is also providing a <a href="http://cog-validate.radiant.earth/html">hosted version</a> of this code. And if you want to run your own hosted version you can get the <a href="https://github.com/rouault/cog_validator">source code</a>.
-				<h3>Performance</h3>
-				<p>See <a href="https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF#Performancetesting">COG Performance Testing on GDAL wiki</a> for some of the initial
-					performance testing</p>
-				<p>Digital Globe has also done extensive performance testing with their IDAHO project, and found the format as performant as their previous custom scheme.
-				</p>
+validate_cloud_optimized_geotiff.validate("test.tif")</code></pre></p>
+								<p>or you can use <a href="https://github.com/cogeotiff/rio-cogeo">rio-cogeo</a> plugin:
+									<pre><code>$ rio cogeo validate test.tif</code></pre>
+								</p> 
 
-                </section>
+								<p>Note: <a href="http://radiant.earth">Radiant.Earth</a> is also providing a <a href="http://cog-validate.radiant.earth/html">hosted version</a> of the <i>validate_cloud_optimized_geotiff.py<i> script. And if you want to run your own hosted version you can get the <a href="https://github.com/rouault/cog_validator">source code</a>.
 
+								<h3>Performance</h3>
+								<p>See <a href="https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF#Performancetesting">COG Performance Testing on GDAL wiki</a> for some of the initial
+									performance testing</p>
+								<p>Digital Globe has also done extensive performance testing with their IDAHO project, and found the format as performant as their previous custom scheme.</p>
+
+              </section>
 					</div>
 
 				<!-- Footer -->
