@@ -39,9 +39,17 @@
                 <p><a href="http://planet.com">Planet</a> produces all its data as COG, and has a little tutorial on how to <a href="https://www.planet.com/docs/guides/quickstart-subarea/">download part of an image</a> using VSI Curl. Most of the tutorial is specific to working with the Planet API, but it shows the use of GDAL Warp with a COG to extract a single farm field from a larger image.
 
 								<h3>How to generate a Cloud Optimized GeoTIFF</h3>
-                <p>Also on the GDAL wiki page about COG, there is a section on <a href="https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF#HowtogenerateitwithGDAL">How to generate it with GDAL</a>. For quick reference the one liner is:
+
+								<p>As of version 3.1 of GDAL there is a built in <a href="https://gdal.org/drivers/raster/cog.html">COG provider</a> which by default provides tiling and creation of overviews, use it like this:
+									<pre><code> gdal_translate input.tif output_cog.tif -of COG -co COMPRESS=LZW</code></pre>
+								</p>
+		
+				<h4>Older GDAL versions</h4>
+				<p>There is a GDAL wiki page about COG creation: <a href="https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF#HowtogenerateitwithGDAL">How to generate it with GDAL</a>. For quick reference the one liner is:
                 	<pre><code>gdal_translate in.tif out.tif -co TILED=YES -co COPY_SRC_OVERVIEWS=YES -co COMPRESS=DEFLATE</code></pre>
-                </p>
+				</p>
+				
+				<h4>Rio-cogeo</h4>
 								<p>or you can use <a href="https://github.com/cogeotiff/rio-cogeo">rio-cogeo</a> plugin:
 									<pre><code>$ rio cogeo create in.tif out.tif --cog-profile deflate</code></pre>
 								</p> 
