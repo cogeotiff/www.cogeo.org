@@ -3801,3 +3801,30 @@
 			}
 
 		}
+/* Icons */
+.social-icons {
+	text-align: center;
+	margin-top: 20px;
+  }
+  .social-icons a {
+	margin: 0 10px;
+	transition: background-color 0.3s;
+	text-decoration: none;
+	border-bottom: none;
+  }
+  .social-icons img {
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	padding: 10px;
+	transition: background-color 0.3s;
+  }
+  .social-icons a:nth-child(1):hover img {
+	background-color: #8cc9f0;
+  }
+  .social-icons a:nth-child(2):hover img {
+	background-color: #c79cc8;
+  }
+  .social-icons a:nth-child(3):hover img {
+	background-color: #a89cc8;
+  }
