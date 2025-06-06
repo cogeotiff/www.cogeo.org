@@ -35,7 +35,7 @@
 								<p>This tutorial will show you how to read a Cloud Optimized GeoTIFF (COG) in QGIS - streaming straight from its online location instead of downloading it. Since QGis release 3.2, reading COG is supported within the data source manager (<a href="https://qgis.org/en/site/forusers/visualchangelog32/index.html#feature-opening-of-vector-and-raster-stored-on-http-s-ftp-or-cloud-services">See changelog</a>). Earlier releases (e.g. long term release 2.18.28 'Las Palmas' did not yet supported reading a COG as a main operation, but since QGIS already used GDAL as its main data format library, it’s possible with a little bit of configuration in those versions as well.</p>
 
 								<h2>Finding a COG to test</h2>
-								<p>Some users will already have a Cloud Optimized GeoTIFF that they can use, but if you don’t and want to try out COGs yourself, head over to <a href="http://openaerialmap.org">OpenAerialMap</a>. Browse around and find an image that suits your fancy. I’m going to use this <a href="https://map.openaerialmap.org/#/124.84695911407469,-9.06145685133634,14/3101122/59d349b446e19904aab0ae9f?_k=h5z9h8">one from the Indonesian Red Cross</a>. To get the proper reference to the Cloud Optimized GeoTIFF, you must <b>right-click</b> on the ‘download’ icon and then click ‘copy link address'.</p>
+								<p>Some users will already have a Cloud Optimized GeoTIFF that they can use, but if you don’t and want to try out COGs yourself, head over to <a href="https://openaerialmap.org">OpenAerialMap</a>. Browse around and find an image that suits your fancy. I’m going to use this <a href="https://map.openaerialmap.org/#/124.84695911407469,-9.06145685133634,14/3101122/59d349b446e19904aab0ae9f?_k=h5z9h8">one from the Indonesian Red Cross</a>. To get the proper reference to the Cloud Optimized GeoTIFF, you must <b>right-click</b> on the ‘download’ icon and then click ‘copy link address'.</p>
 								<img src="images/cog_openaerial_map_example.png" style="width: 70%;display: block;margin: auto;"/><br/>
 								<p>This will copy the link you need to your clipboard. You can paste this into a scratch pad document to use later, or you can just not copy anything else and use it in our next step in QGIS.</p>
 
@@ -58,7 +58,7 @@
 								<p>We want to create our Virtual Raster (VRT) in QGIS. To do this make sure you have the <a href="https://docs.qgis.org/2.2/en/docs/user_manual/plugins/plugins_gdaltools.html">GDAL Tools Plugin</a> installed in QGIS (it should ship standard in most distributions). Then navigate to <i>Raster -> Miscellaneous -> Build Virtual Raster (Catalog)</i>.</p>
 								<img src="https://user-images.githubusercontent.com/407017/31321202-be8bbc8c-ac36-11e7-9c8c-ddd7ade435bf.png" style="width: 70%; max-width: 450px; display: block;margin: auto;"/><br/>
 								<p>When you click on that, it should open a dialog box that helps you create a VRT to read your Cloud Optimized GeoTIFF. The key bit to make it work is to prepend <i><b>/vsicurl/</i></b> before your pasted in URL from the link location. So for our link the ‘Input files’ field should look like:
-									<code>/vsicurl/http://oin-hotosm.s3.amazonaws.com/59d33df023c8440011d7b26d/0/b378087a-c2a5-43a0-abec-71fcfb051150.tif</code>
+									<code>/vsicurl/https://oin-hotosm.s3.amazonaws.com/59d33df023c8440011d7b26d/0/b378087a-c2a5-43a0-abec-71fcfb051150.tif</code>
 								Specify an output file where you want to save the small file that contains the pointer to the online COG.</p>
 								<img src="https://user-images.githubusercontent.com/407017/31321282-51d87b82-ac38-11e7-9ff9-00a8766d138c.png" style="width: 70%; max-width: 370px; display: block;margin: auto;"/><br/>
 								<p>You can leave the rest of the defaults as is, or try out things like reprojection. If you want transparency, you can select the 'Source No Data' option, and it will use that color value as 'transparent'. 0 is 'real black', which can often be transparent, but it has an annoying side effect of making pure black pixels in your image also transparent. For this exercise we are just using one COG, but you could just as easily point at multiple ones online, just put a comma between each (with no space). Be sure to prepend <i><b>/vsicurl/</i></b> onto each of them.</p>
@@ -81,7 +81,7 @@
 								<li><a href="https://github.com/cholmes/www.cogeo.org" class="button">Contribute</a></li>
 							</ul>
 						</section>
-						<p class="copyright"><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. Design: <a href="https://html5up.net" target="_blank">HTML5 UP</a>.</p>
+						<p class="copyright"><a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. Design: <a href="https://html5up.net" target="_blank">HTML5 UP</a>.</p>
 					</footer>
 
 			</div>
