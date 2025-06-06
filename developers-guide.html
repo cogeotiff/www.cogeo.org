@@ -37,7 +37,7 @@
 								<h3>Reading a Cloud Optimized GeoTIFF</h3>
                 <p>For C/C++ or Python developers, the easiest way to read a COG in a way that takes advantage of its unique properties is to use GDAL and its <a href="https://gdal.org/en/latest/user/virtual_file_systems.html#network-based-file-systems">VSI Curl</a> functionality. See the GDAL Wiki on Cloud Optimized GeoTIFF in its <a href="https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF#HowtoreaditwithGDAL">How to read it with GDAL</a> section. A majority of geospatial software in the world uses GDAL as a library, so incorporating it is likely the fastest way to incorporate COG reading into your software.</p>
                 <p>Java developers may find it more convenient to use pure Java readers that integrate well with the Java2D framework. Taking advantage of COG properties on file systems, HTTP or S3 is possible, for example with GeoTools and <a href="https://sis.apache.org/howto/rasters_bigger_than_memory.html">Apache SIS</a> libraries.</p>
-                <p><a href="http://planet.com">Planet</a> produces all its data as COG, and has a little tutorial on how to <a href="https://developers.planet.com/tutorials/download-a-subarea/">download part of an image</a> using VSI Curl. Most of the tutorial is specific to working with the Planet API, but it shows the use of GDAL Warp with a COG to extract a single farm field from a larger image.
+                <p><a href="https://planet.com">Planet</a> produces all its data as COG, and has a little tutorial on how to <a href="https://developers.planet.com/tutorials/download-a-subarea/">download part of an image</a> using VSI Curl. Most of the tutorial is specific to working with the Planet API, but it shows the use of GDAL Warp with a COG to extract a single farm field from a larger image.
 
 								<h3>How to generate a Cloud Optimized GeoTIFF</h3>
 
@@ -68,7 +68,7 @@ validate_cloud_optimized_geotiff.validate("test.tif")</code></pre></p>
 									<pre><code>$ rio cogeo validate test.tif</code></pre>
 								</p>
 
-								<p>Note: <a href="http://radiant.earth">Radiant.Earth</a> is also providing a <a href="http://cog-validate.radiant.earth/html">hosted version</a> of the <i>validate_cloud_optimized_geotiff.py<i> script. And if you want to run your own hosted version you can get the <a href="https://github.com/rouault/cog_validator">source code</a>.
+								<p>Note: <a href="https://radiant.earth">Radiant.Earth</a> is also providing a <a href="https://cog-validate.radiant.earth/html">hosted version</a> of the <i>validate_cloud_optimized_geotiff.py<i> script. And if you want to run your own hosted version you can get the <a href="https://github.com/rouault/cog_validator">source code</a>.
 
 								<h3>Performance</h3>
 								<p>See <a href="https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF#Performancetesting">COG Performance Testing on GDAL wiki</a> for some of the initial
