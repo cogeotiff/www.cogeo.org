@@ -32,16 +32,16 @@
 							<section id="content" class="main">
 								<span class="image main"><!--TODO: nice graphic up top img src="https://user-images.githubusercontent.com/407017/31298205-e760c336-aa9d-11e7-9dea-2530ffd64af1.png" alt="" style="width: 90%;height: 90%;display: block;margin: auto;" /--></span>
 								<h2>Introduction</h2>
-								<p>This tutorial will show you how to read a Cloud Optimized GeoTIFF (COG) in QGIS - streaming straight from its online location instead of downloading it. Since QGis release 3.2, reading COG is supported within the data source manager (<a href="https://qgis.org/en/site/forusers/visualchangelog32/index.html#feature-opening-of-vector-and-raster-stored-on-http-s-ftp-or-cloud-services">See changelog</a>). Earlier releases (e.g. long term release 2.18.28 'Las Palmas' did not yet supported reading a COG as a main operation, but since QGIS already used GDAL as its main data format library it’s possible with a little bit of configuration in those versions as well.</p>
+								<p>This tutorial will show you how to read a Cloud Optimized GeoTIFF (COG) in QGIS - streaming straight from its online location instead of downloading it. Since QGis release 3.2, reading COG is supported within the data source manager (<a href="https://qgis.org/en/site/forusers/visualchangelog32/index.html#feature-opening-of-vector-and-raster-stored-on-http-s-ftp-or-cloud-services">See changelog</a>). Earlier releases (e.g. long term release 2.18.28 'Las Palmas' did not yet supported reading a COG as a main operation, but since QGIS already used GDAL as its main data format library, it’s possible with a little bit of configuration in those versions as well.</p>
 
 								<h2>Finding a COG to test</h2>
-								<p>Some users will already have a Cloud Optimized GeoTIFF that they can use, but if you don’t and want to try out COG’s yourself then head over to <a href="http://openaerialmap.org">OpenAerialMap</a>. Browse around and find an image that suits your fance. I’m going to use this <a href="https://map.openaerialmap.org/#/124.84695911407469,-9.06145685133634,14/3101122/59d349b446e19904aab0ae9f?_k=h5z9h8">one from the Indonesian Red Cross</a>. To get the proper reference to the Cloud Optimized GeoTIFF you must <b>right-click</b> on the ‘download’ icon and then click ‘copy link address'.</p>
+								<p>Some users will already have a Cloud Optimized GeoTIFF that they can use, but if you don’t and want to try out COGs yourself, head over to <a href="http://openaerialmap.org">OpenAerialMap</a>. Browse around and find an image that suits your fancy. I’m going to use this <a href="https://map.openaerialmap.org/#/124.84695911407469,-9.06145685133634,14/3101122/59d349b446e19904aab0ae9f?_k=h5z9h8">one from the Indonesian Red Cross</a>. To get the proper reference to the Cloud Optimized GeoTIFF, you must <b>right-click</b> on the ‘download’ icon and then click ‘copy link address'.</p>
 								<img src="images/cog_openaerial_map_example.png" style="width: 70%;display: block;margin: auto;"/><br/>
 								<p>This will copy the link you need to your clipboard. You can paste this into a scratch pad document to use later, or you can just not copy anything else and use it in our next step in QGIS.</p>
 
 								<h2>Loading COG in QGIS</h2>
 								<h3>QGis 3.2 or later</h3>
-								<p>The <i>Data source manager</i> within QGis provides an interface for a variety of data sources. To open the <i>Data source manager</i> click the icon.</p>
+								<p>The <i>Data source manager</i> within QGIS provides an interface for a variety of data sources. To open the <i>Data source manager</i>, click the icon.</p>
 								<img src="images/cog_qgis_data_source.png" style="width: 70%;display: block;margin: auto;"/><br/>
 
 								<p>In the <i>Data source manager Browser</i> choose the 'Raster' dialog and select 'Protocol: HTTP(S), cloud, etc.'. In the protocol dialog, select Type 'HTTP/HTTPS/FTP' and paste the URL from the link location (in this case from the image of the Indonesian Red Cross).</p>
@@ -53,22 +53,22 @@
 								<h3>QGis before version 3.2</h3>
 								<p>The key to reading a Cloud Optimized GeoTIFF with QGIS is the ‘vsicurl’ virtual file system of GDAL. Normally QGIS will open any raster file with GDAL, and an online file read with vsicurl should be no different, but unfortunately there is a hard coded assumption in the QGIS GUI that if you’re adding a raster layer that is not WMS or WCS then of course it must be a file.</p>
 								<img src="https://user-images.githubusercontent.com/407017/31320826-f893f856-ac2f-11e7-914f-41aa825203a4.gif" style="width: 70%;display: block;margin: auto;"/><br/>
-								<p>Thankfully there is a way around it, with another great feature of GDAL - Virtual Rasters (VRT’s). And QGIS has a great little tool to build a virtual raster.</p>
+								<p>Thankfully there is a way around it, with another great feature of GDAL - Virtual Rasters (VRTs). QGIS has a great little tool to build a virtual raster.</p>
 
-								<p>We want to create our Virtual Raster (VRT) in QGIS. To do this make sure you have the <a href="https://docs.qgis.org/2.2/en/docs/user_manual/plugins/plugins_gdaltools.html">GDAL Tools Plugin</a> installed in QGIS (it should ship standard in most distributions). And then navigate to <i>Raster -> Miscellaneous -> Build Virtual Raster (Catalog)</i>.</p>
+								<p>We want to create our Virtual Raster (VRT) in QGIS. To do this make sure you have the <a href="https://docs.qgis.org/2.2/en/docs/user_manual/plugins/plugins_gdaltools.html">GDAL Tools Plugin</a> installed in QGIS (it should ship standard in most distributions). Then navigate to <i>Raster -> Miscellaneous -> Build Virtual Raster (Catalog)</i>.</p>
 								<img src="https://user-images.githubusercontent.com/407017/31321202-be8bbc8c-ac36-11e7-9c8c-ddd7ade435bf.png" style="width: 70%; max-width: 450px; display: block;margin: auto;"/><br/>
-								<p>When you click on that it should open a dialog box that helps you create a VRT to read your cloud optimized geotiff. The key bit to make it work is to prepend <i><b>/vsicurl/</i></b> before your pasted in URL from the link location. So for our link the ‘Input files’ field should look like:
+								<p>When you click on that, it should open a dialog box that helps you create a VRT to read your Cloud Optimized GeoTIFF. The key bit to make it work is to prepend <i><b>/vsicurl/</i></b> before your pasted in URL from the link location. So for our link the ‘Input files’ field should look like:
 									<code>/vsicurl/http://oin-hotosm.s3.amazonaws.com/59d33df023c8440011d7b26d/0/b378087a-c2a5-43a0-abec-71fcfb051150.tif</code>
 								Specify an output file where you want to save the small file that contains the pointer to the online COG.</p>
 								<img src="https://user-images.githubusercontent.com/407017/31321282-51d87b82-ac38-11e7-9ff9-00a8766d138c.png" style="width: 70%; max-width: 370px; display: block;margin: auto;"/><br/>
-								<p>You can leave the rest of the defaults as is, or try out things like reprojection. If you want transparency you can select the 'Source No Data' option, and it will use that color value as 'transparent'. 0 is 'real black', which can often be transparent, but it has an annoying side effect of making pure black pixels in your image also transparent. For this exercise we are just using one COG, but you could just as easily point at multiple ones online, just put a comma between each (with no space). And be sure to prepend <i><b>/vsicurl/</i></b> onto each of them.</p>
+								<p>You can leave the rest of the defaults as is, or try out things like reprojection. If you want transparency, you can select the 'Source No Data' option, and it will use that color value as 'transparent'. 0 is 'real black', which can often be transparent, but it has an annoying side effect of making pure black pixels in your image also transparent. For this exercise we are just using one COG, but you could just as easily point at multiple ones online, just put a comma between each (with no space). Be sure to prepend <i><b>/vsicurl/</i></b> onto each of them.</p>
 								<p>If you leave ‘Load into canvas when finished’ checked, then after a bit of processing time you should see your COG displayed as an active layer in QGIS.</p>
 								<img src="https://user-images.githubusercontent.com/407017/31321403-7e180814-ac3a-11e7-8696-c3b177031b50.png" style="width: 70%;display: block;margin: auto;"/><br/>
 
-								<h2>COG versus local geotiff file</h2>
+								<h2>COG versus local GeoTIFF file</h2>
 								<p>Admittedly this looks about the same as downloading and using a GeoTIFF locally. But the power of the Cloud Optimized GeoTIFF becomes apparent when you zoom in. On fast connections it should take less than a second to redraw, at full resolutions. This is a little slower than downloading the whole file and loading it up locally.</p>
 								<img src="https://user-images.githubusercontent.com/407017/31321531-7dbd5ee4-ac3c-11e7-896c-c958fec356ae.png" style="width: 70%;display: block;margin: auto;"/><br/>
-								<p>So you can try to hit the download button from OpenAerialMap to compare the performance. But what you’ll find there is a 1.2 gigabyte file that takes quite awhile to download on all but the fastest connections. The advantage of using the Cloud Optimized GeoTIFF is that you can zoom to anywhere within seconds, instead of waiting for a huge GeoTIFF to download. This access pattern saves everyone time and money, by getting to people only the data they need to do their task. And it enables access to fully analytic data, not just the visualization that web tiles allow.</p>
+								<p>So you can try to hit the download button from OpenAerialMap to compare the performance. But what you’ll find there is a 1.2 gigabyte file that takes quite a while to download on all but the fastest connections. The advantage of using Cloud Optimized GeoTIFF is that you can zoom to anywhere within seconds, instead of waiting for a huge GeoTIFF to download. This access pattern saves everyone time and money, by getting to people only the data they need to do their task. And it enables access to fully analytic data, not just the visualization that web tiles allow.</p>
 							</section>
 					</div>
 
@@ -76,7 +76,7 @@
 					<footer id="footer">
 						<section>
 							<h2>Pull Requests Accepted</h2>
-							<p>The Cloud Optimized GeoTIFF project and website is fully community driven. If something is not right on the website, or if you want to contribute a tutorial, add your software to the implementation list or tell the world about the awesome data you are making available as COG's then please contribute on GitHub.</p>
+							<p>The Cloud Optimized GeoTIFF project and website is fully community driven. If something is not right on the website, or if you want to contribute a tutorial, add your software to the implementation list, or tell the world about the awesome data you are making available as COGs, then please contribute on GitHub.</p>
 							<ul class="actions">
 								<li><a href="https://github.com/cholmes/www.cogeo.org" class="button">Contribute</a></li>
 							</ul>
