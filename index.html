@@ -72,12 +72,12 @@
 									<li>
 										<span class="icon major style3 fa-copy"></span>
 										<h3>Reduced Duplication of Data</h3>
-										<p>Accessing COG’s with cloud workflows enables diverse software to all access a single file online instead of needing to copy and cache the data</p>
+										<p>Accessing COGs with cloud workflows enables diverse software to all access a single file online instead of needing to copy and cache the data</p>
 									</li>
 									<li>
 										<span class="icon major style5 fa-diamond"></span>
 										<h3>Legacy Compatibility</h3>
-										<p>Traditional GIS software is able to treat Cloud Optimized GeoTIFF’s just like normal GeoTIFF’s, so data providers need only produce one format</p>
+										<p>Traditional GIS software is able to treat Cloud Optimized GeoTIFFs just like normal GeoTIFFs, so data providers need only produce one format</p>
 									</li>
 								</ul>
 								<footer class="major">
@@ -94,7 +94,7 @@
 									<h2>How does it work?</h2>
 									<p>Cloud Optimized GeoTIFF relies on two complementary pieces of technology.</p>
 									<p>The first is the ability of a GeoTIFF to not only store the raw pixels of the image, but to also organize those pixels in particular ways. The second is HTTP GET range requests, that let clients
-										ask for just the portions of a file that they need. Together these enable fully online processing of data by COG-aware clients, as they can stream the right parts of the GeoTIFF as they need it, instead of having to download the whole file. </p>
+										ask for just the portions of a file that they need. Together, these enable fully online processing of data by COG-aware clients, as they can stream the right parts of the GeoTIFF as they need it, instead of having to download the whole file. </p>
 								</header>
 								<footer class="major">
 									<ul class="actions">
@@ -109,7 +109,7 @@
 							<section id="cta" class="main special">
 								<header class="major">
 									<h2>Get Started</h2>
-									<p>There are a variety of ways to get started. Data Providers can start to make imagery available as Cloud Optimized GeoTiffs. Developers can leverage <a href="https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF#HowtoreaditwithGDAL">GDAL's VSICurl</a> with COG Data. And Users can find software and data providers who use COG today. </p>
+									<p>There are a variety of ways to get started. Data Providers can start to make imagery available as Cloud Optimized GeoTIFFs. Developers can leverage <a href="https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF#HowtoreaditwithGDAL">GDAL's VSICurl</a> with COG Data. Users can find software and data providers who use COG today. </p>
 								</header>
 								<footer class="major">
 									<ul class="actions">
@@ -155,48 +155,48 @@
 
 								<h2>Tools</h2>
 								<ul>
-									<li><a href="http://qgis.org">QGIS</a> 3.2 has stellar COG support, with an option to select online files in the data import, including authentication for private data (tutorial coming soon). Older versions can read Cloud Optimized GeoTIFF's using Virtual Raster Builder with a vsicurl file format to refer to the online URL. See the <a href="qgis-tutorial.html">tutorial</a> for details.</li>
+									<li><a href="http://qgis.org">QGIS</a> 3.2 has stellar COG support, with an option to select online files in the data import, including authentication for private data (tutorial coming soon). Older versions can read Cloud Optimized GeoTIFFs using Virtual Raster Builder with a vsicurl file format to refer to the online URL. See the <a href="qgis-tutorial.html">tutorial</a> for details.</li>
 									<li><a href="https://geotiffjs.github.io/cog-explorer">COG-Explorer</a> is a browser app to visualize Cloud Optimized GeoTIFFs, for example from the Landsat-8 archive on S3, based on <a href="https://geotiffjs.github.io/">geotiff.js</a>.</li>
-									<li><a href="https://github.com/mojodna/marblecutter">Marblecutter</a> serves web tiles from Cloud Optimized GeoTIFF's, completely on the fly. You can see it in action at <a href="http://openaerialmap.org">OpenAerialMap</a>, as all tiles are rendered by an early version.</li>
+									<li><a href="https://github.com/mojodna/marblecutter">Marblecutter</a> serves web tiles from Cloud Optimized GeoTIFFs, completely on the fly. You can see it in action at <a href="http://openaerialmap.org">OpenAerialMap</a>, as all tiles are rendered by an early version.</li>
 									<li><a href="https://github.com/radiantearth/tiles.rdnt.io">tiles.rdnt.io</a> is an instance of Marblecutter running on <a href="https://aws.amazon.com/lambda/">lambda</a>, hosted by Radiant.Earth, that anyone can use. It powers the map at <a href="http://www.cogeo.org/map">cogeo.org/map</a>.
-									<li><a href="https://github.com/cogeotiff/rio-cogeo">Rio-cogeo</a> is a Rasterio plugin to create and validate Cloud Optimized GeoTIFF's.</li>
-									<li><a href="https://github.com/cogeotiff/rio-tiler">Rio-tiler</a> is a Rasterio plugin to read mercator tiles from Cloud Optimized GeoTIFF's. Used to create serverless tiles server with <a href="https://github.com/vincentsarago/lambda-tiler">lambda-tiler</a>.</li>
-									<li><a href="https://github.com/mapbox/rio-glui">Rio-glui</a> Rasterio plugin that helps explore Cloud Optimized geotiff on your web-browser.</li>
-									<li><a href="https://earthengine.google.com/">Google Earth Engine</a> now supports <i>output</i> of COG's from any Earth Engine operation, see: <a href="https://developers.google.com/earth-engine/exporting#configuration-parameters">Exporting - Configuration Parameters</a>. Earth Engine supports reading COG data hosted on Google Cloud Storage, see: <a href="https://developers.google.com/earth-engine/Earth_Engine_asset_from_cloud_geotiff">COG-backed Earth Engine Assets</a>.</li>
-									<li><a href="http://grass.osgeo.org">GRASS GIS</a> can read Cloud Optimized GeoTIFF's by using Virtual Raster Builder with a vsicurl file format to refer to the online URL and registration within GRASS GIS using <a href="https://grass.osgeo.org/grass74/manuals/r.external.html">r.external</a>.</li>
+									<li><a href="https://github.com/cogeotiff/rio-cogeo">Rio-cogeo</a> is a Rasterio plugin to create and validate Cloud Optimized GeoTIFFs.</li>
+									<li><a href="https://github.com/cogeotiff/rio-tiler">Rio-tiler</a> is a Rasterio plugin to read mercator tiles from Cloud Optimized GeoTIFFs. Used to create serverless tile servers with <a href="https://github.com/vincentsarago/lambda-tiler">lambda-tiler</a>.</li>
+									<li><a href="https://github.com/mapbox/rio-glui">Rio-glui</a> Rasterio plugin that helps explore Cloud Optimized GeoTIFF in your web browser.</li>
+									<li><a href="https://earthengine.google.com/">Google Earth Engine</a> now supports <i>output</i> of COGs from any Earth Engine operation, see: <a href="https://developers.google.com/earth-engine/exporting#configuration-parameters">Exporting - Configuration Parameters</a>. Earth Engine supports reading COG data hosted on Google Cloud Storage, see: <a href="https://developers.google.com/earth-engine/Earth_Engine_asset_from_cloud_geotiff">COG-backed Earth Engine Assets</a>.</li>
+									<li><a href="http://grass.osgeo.org">GRASS GIS</a> can read Cloud Optimized GeoTIFFs by using Virtual Raster Builder with a vsicurl file format to refer to the online URL and registration within GRASS GIS using <a href="https://grass.osgeo.org/grass74/manuals/r.external.html">r.external</a>.</li>
 									<li><a href="http://radiant.earth">Radiant.Earth</a> is hosting a <a href="http://cog-validate.radiant.earth/html">Cloud Optimized GeoTIFF validator</a>. You can also get the <a href="https://github.com/rouault/cog_validator"> source code</a>, created by <a href="http://www.spatialys.com/en/about/">Even Rouault</a> with support from <a href="http://planet.com">Planet</a>.
-									<li><a href="https://github.com/mapbox/COGDumper">COGDumper</a> is an open source python library to read COG's internal tiles. It's a lightweigh library which doesn't need GDAL and can be installed with <code>pip install cogdumper</code>.
+									<li><a href="https://github.com/mapbox/COGDumper">COGDumper</a> is an open source python library to read COG's internal tiles. It's a lightweight library that doesn't need GDAL, and can be installed with <code>pip install cogdumper</code>.
 									<li><a href="https://maxar.com">Maxar</a> delivers tiled COGs of their satellite imagery through their <a href="https://ard.maxar.com/docs">Analysis Ready Data</a> (ARD) product line. See their <a href="https://blog.maxar.com/earth-intelligence/2021/introducing-maxar-ard-accelerating-the-pixel-to-answer-workflow-with-analysis-ready-data">blog post</a> for more information.</li>
-									<li><a href="https://wiki.orfeo-toolbox.org/index.php/Monteverdi">Monteverdi</a>, the Orfeo ToolBox image viewer, can navigate in remote cloud optimized geotiff out of the box.</li>
+									<li><a href="https://wiki.orfeo-toolbox.org/index.php/Monteverdi">Monteverdi</a>, the Orfeo ToolBox image viewer, can navigate in remote Cloud Optimized GeoTIFF out of the box.</li>
 									<li><a href="http://geoserver.org">GeoServer</a> can leverage COGs by using the <a href="https://docs.geoserver.org/latest/en/user/community/cog/cog.html">COG Support</a> community module.
-									<li><a href="http://rasterframes.io/">RasterFrames</a> brings the power of Spark DataFrames to geospatial raster data, and is able to read Cloud Optimized GeoTIFF's using <a href="http://geotrellis.io">GeoTrellis</a>.
-									<li><a href="http://farmshots.com/">Farmshots</a> builds agriculture analytics on top of Planet’s Cloud Optimized GeoTIFF’s, pulling in just the needed field data and serving it up live to their customers.</li>
+									<li><a href="http://rasterframes.io/">RasterFrames</a> brings the power of Spark DataFrames to geospatial raster data, and is able to read Cloud Optimized GeoTIFFs using <a href="http://geotrellis.io">GeoTrellis</a>.
+									<li><a href="http://farmshots.com/">Farmshots</a> builds agriculture analytics on top of Planet’s Cloud Optimized GeoTIFFs, pulling in just the needed field data and serving it up live to their customers.</li>
 									<li><a href="https://eosda.com/">Earth Observing System</a>’s Engine and Land Viewer are both able to leverage Cloud Optimized GeoTIFFs for live web tile serving and on the fly band math.</li>
 									<li><a href="https://geopera.com/">Geopera</a>’s Imagery Portal utilizes Cloud Optimized GeoTIFFs for quick access to specific subsets of large datasets, reducing bandwith and allowing faster rendering and processing times.</li>
 									<li><a href="https://github.com/DHI-GRAS/terracotta">Terracotta</a> is a flexible, open-source tile server that you can use to view and serve your Cloud Optimized GeoTIFFs as web layers. Supports serverless architectures and serving COGs from S3 buckets.</li>
 									<li><a href="https://github.com/OpenDroneMap/WebODM">WebODM</a> is a user-friendly, extendable application and API for processing aerial imagery capable of serving Cloud Optimized GeoTIFFs.</li>
 									<li><a href="https://github.com/OpenDroneMap/ODM">ODM</a> is a command line toolkit to process aerial imagery and is capable of generating Cloud Optimized GeoTIFFs as 2D outputs.</li>
-									<li><a href="https://github.com/fabric-io-rodrigues/GeoTiffCOG">GeoTiffCOG C#</a> is a C# Library for querying GeoTiff files, including Cloud Optimized GeoTIFFs.</li>									
-									<li><a href="https://github.com/airbusgeo/cogger">Cogger</a> is a command line utility and library that produces a COG from a tiled geotiff. It works by shuffling the original geotiff file's bytes, and is therefore very fast as it does not induce an imagery recompression. Cogger is written in go, cross-platform, and does not depend on GDAL.</li>
+									<li><a href="https://github.com/fabric-io-rodrigues/GeoTiffCOG">GeoTiffCOG C#</a> is a C# Library for querying GeoTIFF files, including Cloud Optimized GeoTIFFs.</li>
+									<li><a href="https://github.com/airbusgeo/cogger">Cogger</a> is a command line utility and library that produces a COG from a tiled GeoTIFF. It works by shuffling the original GeoTIFF file's bytes, and is therefore very fast as it does not induce an imagery recompression. Cogger is written in go, cross-platform, and does not depend on GDAL.</li>
 									<li><a href="https://nextgis.com">NextGIS</a> is a full SaaS stack of geospatial software: desktop, web and mobile. NextGIS Web (server) is able to create and serve Cloud Optimized GeoTIFFs. NextGIS Connect (QGIS plugin) is able to upload to NextGIS Web and add COGs back to QGIS in one click (with the style if any). <a href="https://nextgis.com/blog/cog-support/">Details</a></li>
-									<li><a href="https://github.com/batugane/cog-validator-java">cog-validator-java</a> is a Java-based tool for validating COG files. It ensures COG files meet required specifications and provides detailed error messages for correction. Ideal for Java developers.</li>	
+									<li><a href="https://github.com/batugane/cog-validator-java">cog-validator-java</a> is a Java-based tool for validating COGs. It ensures COGs meet required specifications and provides detailed error messages for correction. Ideal for Java developers.</li>
 								</ul>
 
 								<h2>Libraries</h2>
 								<ul>
-									<li><a href="http://gdal.org">GDAL</a> was the project that started Cloud Optimized GeoTIFF's, by leveraging the <a href="https://gdal.org/api/cpl.html#cpl-vsi-h">vsicurl driver</a>, so both reading and writing COG's is well supported. See the <a href="https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF#HowtoreaditwithGDAL">GDAL Wiki</a> for how to read COG files with GDAL.
-									<li><a href="https://geotiffjs.github.io/">geotiff.js</a> is a small library to parse TIFF files for visualization or analysis including Cloud Optimized GeoTIFFs. It is written in pure JavaScript, and is usable in both the browser and node.js applications.</li>
-									<li><a href="https://github.com/mapbox/rasterio">Rasterio</a> wraps the powerful features of GDAL in idiomatic Python functions and classes. Their latest release <a href="https://blog.mapbox.com/build-for-the-cloud-with-rasterio-3254d5d60289">includes a number of features</a> to optimize cloud geotiff access. See their <a href="https://gist.github.com/sgillies/7e5cd548110a5b4d45ac1a1d93cb17a3">Advanced Rasterio Features Notebook</a> for truly excellent documentation on working with COG's.</li>
-									<li><a href="http://geotrellis.io">GeoTrellis</a> is a scalable Scala geospatial library, that can create and read Cloud Optimized GeoTIFF's. Head over to the <a href="https://geotrellis.readthedocs.io/en/latest/guide/core-concepts.html?highlight=cloud%20optimized#cloud-optimized-geotiffs">documentation.</a>  And check out <a href="https://twitter.com/echeipesh"> Eugene Cheipesh's</a> <a href="https://www.slideshare.net/EugeneCheipesh/cloud-optimized-geottiffs-enabling-efficient-cloud-workflows">FOSS4G-NA 2018 talk on COGs.</a> 
-									<li><a href="http://geotools.org">GeoTools</a> is the leading Java geospatial library, and it supports COG's with the <a href="https://github.com/geotools/geotools/tree/master/modules/unsupported/s3-geotiff">s3-geotiff</a> module.
-									<li><a href="https://sis.apache.org">Apache Spatial Information System (SIS)</a> is a Java geospatial library capable to read COG files over HTTP or S3. COG images can be part of a chain of operations such as raster reprojection, which will read only the tiles requested by the final output.
-									<li><a href="http://www.orfeo-toolbox.org">Orfeo ToolBox</a> All Orfeo ToolBox applications can read cloud optimized geotiffs through GDAL (simply prefix file url with /vsicurl/)</li>
-									
-								</ul>	
+									<li><a href="http://gdal.org">GDAL</a> was the project that started Cloud Optimized GeoTIFF, by leveraging the <a href="https://gdal.org/api/cpl.html#cpl-vsi-h">vsicurl driver</a>, so both reading and writing COGs is well supported. See the <a href="https://trac.osgeo.org/gdal/wiki/CloudOptimizedGeoTIFF#HowtoreaditwithGDAL">GDAL Wiki</a> for how to read COGs with GDAL.
+									<li><a href="https://geotiffjs.github.io/">geotiff.js</a> is a small library to parse TIFF files for visualization or analysis, including Cloud Optimized GeoTIFFs. It is written in pure JavaScript, and is usable in both the browser and node.js applications.</li>
+									<li><a href="https://github.com/mapbox/rasterio">Rasterio</a> wraps the powerful features of GDAL in idiomatic Python functions and classes. Their latest release <a href="https://blog.mapbox.com/build-for-the-cloud-with-rasterio-3254d5d60289">includes a number of features</a> to optimize Cloud Optimized GeoTIFF access. See their <a href="https://gist.github.com/sgillies/7e5cd548110a5b4d45ac1a1d93cb17a3">Advanced Rasterio Features Notebook</a> for truly excellent documentation on working with COGs.</li>
+									<li><a href="http://geotrellis.io">GeoTrellis</a> is a scalable Scala geospatial library, that can create and read Cloud Optimized GeoTIFFs. Head over to the <a href="https://geotrellis.readthedocs.io/en/latest/guide/core-concepts.html?highlight=cloud%20optimized#cloud-optimized-geotiffs">documentation.</a>  And check out <a href="https://twitter.com/echeipesh"> Eugene Cheipesh's</a> <a href="https://www.slideshare.net/EugeneCheipesh/cloud-optimized-geottiffs-enabling-efficient-cloud-workflows">FOSS4G-NA 2018 talk on COGs.</a>
+									<li><a href="http://geotools.org">GeoTools</a> is the leading Java geospatial library, and it supports COGs with the <a href="https://github.com/geotools/geotools/tree/master/modules/unsupported/s3-geotiff">s3-geotiff</a> module.
+									<li><a href="https://sis.apache.org">Apache Spatial Information System (SIS)</a> is a Java geospatial library capable of reading COGs over HTTP or S3. COG images can be part of a chain of operations such as raster reprojection, which will read only the tiles requested by the final output.
+									<li><a href="http://www.orfeo-toolbox.org">Orfeo ToolBox</a> All Orfeo ToolBox applications can read Cloud Optimized GeoTIFFs through GDAL (simply prefix the file url with /vsicurl/)</li>
 
-								<p>Most any software that relies on GDAL should support Cloud Optimized GeoTIFF's without much effort. Things like
-								MapServer, Safe FME, ArcGIS and ENVI jump to mind. The fact that they and others aren't on this list mostly means 
-								no one has tested and got them working yet. Feel free to submit a <a href="https://github.com/cogeotiff/www.cogeo.org/pulls">pull request</a> to add any software confirmed to support COG's (links to documentation appreciated!).</p>
+								</ul>
+
+								<p>Most any software that relies on GDAL should support Cloud Optimized GeoTIFFs without much effort. Things like
+								MapServer, Safe FME, ArcGIS and ENVI jump to mind. The fact that they and others aren't on this list mostly means
+								no one has tested and got them working yet. Feel free to submit a <a href="https://github.com/cogeotiff/www.cogeo.org/pulls">pull request</a> to add any software confirmed to support COGs (links to documentation appreciated!).</p>
 
 
 								<footer class="major">
@@ -230,19 +230,19 @@
 
 								</ul>
 
-								
+
 								<ul>
-									<li><a href="http://openaerialmap.org">OpenAerialMap</a> stores all new imagery as Cloud Optimized GeoTIFF's, and also provides a service that takes uploaded data and turns it in to AWS S3 hosted COG's. The only constraint is that data uploaded must be openly licensed.</li>
+									<li><a href="http://openaerialmap.org">OpenAerialMap</a> stores all new imagery as Cloud Optimized GeoTIFFs, and also provides a service that takes uploaded data and turns it in to AWS S3 hosted COGs. The only constraint is that data uploaded must be openly licensed.</li>
 									<li><a href="http://planet.com">Planet</a> provides all its data (from RapidEye, PlanetScope and soon SkySat satellites) as Cloud Optimized GeoTIFFs.</li>
 									<li><a href="http://digitalglobe.com">DigitalGlobe</a>’s <a href="http://gbdx.geobigdata.io">GBDX</a> data is available as Cloud Optimized GeoTIFF, for all processing done on the platform. And their <a href="http://blog.digitalglobe.com/developers/cloud-optimized-geotiffs-and-the-path-to-accessible-satellite-imagery-analytics/">blog post</a> explains how IKONOS and NOAA’s VIIRS night lights data are available as COG</li>
 									<li><a href="https://registry.opendata.aws/cbers/">CBERS on AWS has converted all <a href="http://www.cbers.inpe.br/">CBERS-4</a> data to Cloud Optimized GeoTIFF.
-									<li><a href="https://spacenetchallenge.github.io/">SpaceNet</a> data is all available as COG. You can browser the data on their <a href="https://vigilant-heyrovsky-0d9af8.netlify.com/">STAC Browser instance</a>.
-									<li><a href="https://www.nasa.gov/mission_pages/station/research/experiments/867.html">ISERV</a> data from NASA has been made available by <a href="http://radiant.earth">Radiant.Earth</a> as cloud optimized geotiff. You can browser the data on their <a href="http://iserv-stac.netlify.com/">STAC Browser instance</a>.
-									<li><a href="https://mundiwebservices.com/">Mundi</a> offers a wide range of EO data as Cloud Optimized GeoTIFF. A collection of <a href="https://mundiwebservices.com/data/sentinel-1">Copernicus Sentinel-1 GRD</a> files is available as COG and Mundi provides other collections on demand.
+									<li><a href="https://spacenetchallenge.github.io/">SpaceNet</a> data is all available as COG. You can browse the data on their <a href="https://vigilant-heyrovsky-0d9af8.netlify.com/">STAC Browser instance</a>.
+									<li><a href="https://www.nasa.gov/mission_pages/station/research/experiments/867.html">ISERV</a> data from NASA has been made available by <a href="http://radiant.earth">Radiant.Earth</a> as a Cloud Optimized GeoTIFF. You can browse the data on their <a href="http://iserv-stac.netlify.com/">STAC Browser instance</a>.
+									<li><a href="https://mundiwebservices.com/">Mundi</a> offers a wide range of EO data as Cloud Optimized GeoTIFF. A collection of <a href="https://mundiwebservices.com/data/sentinel-1">Copernicus Sentinel-1 GRD</a> files is available as COG, and Mundi provides other collections on demand.
 									<li>As a part of the <a href="https://www.ogc.org/" target="_blank">OGC</a> standard, adoption of Cloud Optimized GeoTIFFs increases over time, allowing more software and tools to support the standard natively. Here is the standard: <a href="https://docs.ogc.org/is/21-026/21-026.html" target="_blank">OGC COG Specification</a>. For more details, visit the <a href="https://github.com/opengeospatial" target="_blank">OGC GitHub Profile</a>.</li>
 								</ul>
 
-								<footer class="major">	
+								<footer class="major">
 									<div class="social-icons">
 										<a href="https://x.com/cogeotiff" target="_blank">
 								  			<img src="images/icons/x-icon.png" alt="X">
@@ -265,7 +265,7 @@
 					<footer id="footer">
 						<section>
 							<h2>Pull Requests Accepted</h2>
-							<p>The Cloud Optimized GeoTIFF project and website is fully community driven. If something is not right on the website, or if you want to contribute a tutorial, add your software to the implementation list or tell the world about the awesome data you are making available as COG's then please contribute on GitHub.</p>
+							<p>The Cloud Optimized GeoTIFF project and website is fully community driven. If something is not right on the website, or if you want to contribute a tutorial, add your software to the implementation list or tell the world about the awesome data you are making available as COGs then please contribute on GitHub.</p>
 							<ul class="actions">
 								<li><a href="https://github.com/cholmes/www.cogeo.org" class="button">Contribute</a></li>
 							</ul>
