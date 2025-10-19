@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css">
+  <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
+  <script src="https://unpkg.com/@geomatico/maplibre-cog-protocol/dist/index.js"></script>
+  <title>COG Viewer</title>
+</head>
+<body style="margin:0px">
+<div id="map" style="width: 100%; height: 100vh"></div>
+<form id="load" style="position:absolute; top: 0px;">
+  <input id="cogUrl" type="text" placeholder="Enter COG URL" style="width:600px"/>
+  <button type="submit">Load</button>
+</form>
+<script>
+  maplibregl.addProtocol("cog", MaplibreCOGProtocol.cogProtocol);
+  let map = new maplibregl.Map({
+    container: "map",
+    style: "https://api.protomaps.com/styles/v5/white/en.json?key=8ef48a1582087b3d"
+  });
+
+  const loadCog = async (url) => {
+    const metadata = await MaplibreCOGProtocol.getCogMetadata(url);
+
+    map.fitBounds(metadata.bbox, {animate: false});
+    const minZoom = Math.min(...metadata.images.map(item => item.zoom));
+    bbox = metadata.bbox;
+    const center = [
+      (bbox[0] + bbox[2]) / 2,
+      (bbox[1] + bbox[3]) / 2
+    ];
+    map.jumpTo({
+      center: center,
+      zoom: minZoom
+    });
+
+    if (map.getSource("imageSource")) {
+      map.removeLayer("imageLayer");
+      map.removeSource("imageSource");
+    }
+
+    map.addSource("imageSource", {
+      type: "raster",
+      url: `cog://${url}`,
+      tileSize: 256
+    });
+
+    map.addLayer({
+      id: "imageLayer",
+      source: "imageSource",
+      type: "raster"
+    });
+  };
+
+  document.getElementById("load").addEventListener("submit", (e) => {
+    e.preventDefault(); // prevent page reload
+    const inputValue = document.getElementById("cogUrl").value.trim();
+    console.log("COG URL:", inputValue);
+
+    if (!inputValue) {
+      alert("Please enter a COG URL");
+      return;
+    }
+    loadCog(inputValue);
+  });
+
+  const hash = window.location.hash.substring(1);
+  const params = new URLSearchParams(hash);
+  const urlParam = params.get("url");
+
+  map.on("load", () => {
+    if (urlParam) {
+      loadCog(urlParam);
+    }
+  });
+</script>
+</body>
+</html>
