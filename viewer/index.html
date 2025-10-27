@@ -20,7 +20,7 @@
   });
 
   const loadCog = async (url) => {
-    const resp = await fetch("http://tiles.rdnt.io/bounds?url=" + url);
+    const resp = await fetch("https://tiles.rdnt.io/bounds?url=" + url);
     const bounds = (await resp.json()).bounds;
     map.fitBounds(bounds, {animate: false});
 
