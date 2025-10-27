@@ -3,7 +3,6 @@
 <head>
   <link rel="stylesheet" href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css">
   <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
-  <script src="https://unpkg.com/@geomatico/maplibre-cog-protocol/dist/index.js"></script>
   <title>COG Viewer</title>
 </head>
 <body style="margin:0px">
@@ -13,26 +12,17 @@
   <button type="submit">Load</button>
 </form>
 <script>
-  maplibregl.addProtocol("cog", MaplibreCOGProtocol.cogProtocol);
+  const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
   let map = new maplibregl.Map({
     container: "map",
-    style: "https://api.protomaps.com/styles/v5/white/en.json?key=8ef48a1582087b3d"
+    style: `https://api.protomaps.com/styles/v5/${isDark ? "black" : "white"}/en.json?key=8ef48a1582087b3d`
   });
 
   const loadCog = async (url) => {
-    const metadata = await MaplibreCOGProtocol.getCogMetadata(url);
-
-    map.fitBounds(metadata.bbox, {animate: false});
-    const minZoom = Math.min(...metadata.images.map(item => item.zoom));
-    bbox = metadata.bbox;
-    const center = [
-      (bbox[0] + bbox[2]) / 2,
-      (bbox[1] + bbox[3]) / 2
-    ];
-    map.jumpTo({
-      center: center,
-      zoom: minZoom
-    });
+    const resp = await fetch("http://tiles.rdnt.io/bounds?url=" + url);
+    const bounds = (await resp.json()).bounds;
+    map.fitBounds(bounds, {animate: false});
 
     if (map.getSource("imageSource")) {
       map.removeLayer("imageLayer");
@@ -41,7 +31,7 @@
 
     map.addSource("imageSource", {
       type: "raster",
-      url: `cog://${url}`,
+      tiles: [`http://tiles.rdnt.io/tiles/{z}/{x}/{y}@2x?url=${url}`],
       tileSize: 256
     });
 
