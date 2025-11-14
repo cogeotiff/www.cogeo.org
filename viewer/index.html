@@ -12,12 +12,34 @@
   <button type="submit">Load</button>
 </form>
 <script>
+  const hash = window.location.hash.substring(1);
+  const params = new URLSearchParams(hash);
+  const iframe = params.get("iframe");
+  if (iframe) {
+    document.getElementById('load').remove();
+  } else {
+    document.getElementById("load").addEventListener("submit", (e) => {
+    e.preventDefault(); // prevent page reload
+    const inputValue = document.getElementById("cogUrl").value.trim();
+
+    if (!inputValue) {
+      alert("Please enter a COG URL");
+      return;
+    }
+    loadCog(inputValue);
+    });
+  }
   const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   let map = new maplibregl.Map({
     container: "map",
+    attributionControl: false,
     style: `https://api.protomaps.com/styles/v5/${isDark ? "black" : "white"}/en.json?key=8ef48a1582087b3d`
   });
+
+  map.addControl(new maplibregl.AttributionControl({
+      compact: false
+  }));
 
   const loadCog = async (url) => {
     const resp = await fetch("https://tiles.rdnt.io/bounds?url=" + url);
@@ -42,20 +64,7 @@
     });
   };
 
-  document.getElementById("load").addEventListener("submit", (e) => {
-    e.preventDefault(); // prevent page reload
-    const inputValue = document.getElementById("cogUrl").value.trim();
-    console.log("COG URL:", inputValue);
 
-    if (!inputValue) {
-      alert("Please enter a COG URL");
-      return;
-    }
-    loadCog(inputValue);
-  });
-
-  const hash = window.location.hash.substring(1);
-  const params = new URLSearchParams(hash);
   const urlParam = params.get("url");
 
   map.on("load", () => {
