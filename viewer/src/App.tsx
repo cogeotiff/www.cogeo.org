@@ -25,32 +25,8 @@ async function geoKeysParser(
   };
 }
 
-// const COG_URL =
-//   "https://nz-imagery.s3-ap-southeast-2.amazonaws.com/new-zealand/new-zealand_2024-2025_10m/rgb/2193/CC11.tiff";
-
-// const COG_URL =
-//   "https://ds-wheels.s3.us-east-1.amazonaws.com/m_4007307_sw_18_060_20220803.tif";
-
 const COG_URL =
   "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/18/T/WL/2026/1/S2B_18TWL_20260101_0_L2A/TCI.tif";
-// const COG_URL =
-//   "https://ds-wheels.s3.us-east-1.amazonaws.com/Annual_NLCD_LndCov_2023_CU_C1V0.tif";
-
-// 1:
-// const COG_URL =
-//   "https://data.source.coop/kerner-lab/fields-of-the-world/denmark/s2_images/window_a/g22_00002_10.tif";
-
-// 2:
-// const COG_URL =
-// "https://data.source.coop/ausantarctic/ghrsst-mur-v2/2020/12/12/20201212090000-JPL-L4_GHRSST-SSTfnd-MUR-GLOB-v02.0-fv04.1_sea_ice_fraction.tif";
-
-// 3:
-// const COG_URL =
-//   "https://data.source.coop/tabaqat/riyadh-sentinel-rgb/Sentinel-2_Satellite_RGB_Riyadh.tif";
-
-// 4:
-// const COG_URL =
-//   "https://data.source.coop/giswqs/tn-imagery/imagery/AndersonCo_OrthoPan_2ft_2000.tif";
 
 export default function App() {
   const mapRef = useRef<MapRef>(null);
@@ -61,6 +37,7 @@ export default function App() {
   const params = new URLSearchParams(hash);
   const urlParam = params.get("url");
   const iframe = params.get("iframe");
+  const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   const cog_layer = new COGLayer({
     id: "cog-layer",
@@ -78,11 +55,10 @@ export default function App() {
         ],
         {
           padding: 40,
-          duration: 1000,
+          duration: 0,
         },
       );
-    },
-    beforeId: "boundary_country_outline",
+    }
   });
 
   return (
@@ -96,7 +72,7 @@ export default function App() {
           pitch: 0,
           bearing: 0,
         }}
-        mapStyle="https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json"
+        mapStyle={`https://api.protomaps.com/styles/v5/${isDark ? "black" : "white"}/en.json?key=8ef48a1582087b3d`}
       >
         <DeckGLOverlay layers={[cog_layer]} interleaved />
       </MaplibreMap>
