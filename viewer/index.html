@@ -1,77 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl/dist/maplibre-gl.css">
-  <script src="https://unpkg.com/maplibre-gl/dist/maplibre-gl.js"></script>
-  <title>COG Viewer</title>
-</head>
-<body style="margin:0px">
-<div id="map" style="width: 100%; height: 100vh"></div>
-<form id="load" style="position:absolute; top: 0px;">
-  <input id="cogUrl" type="text" placeholder="Enter COG URL" style="width:600px"/>
-  <button type="submit">Load</button>
-</form>
-<script>
-  const hash = window.location.hash.substring(1);
-  const params = new URLSearchParams(hash);
-  const iframe = params.get("iframe");
-  if (iframe) {
-    document.getElementById('load').remove();
-  } else {
-    document.getElementById("load").addEventListener("submit", (e) => {
-    e.preventDefault(); // prevent page reload
-    const inputValue = document.getElementById("cogUrl").value.trim();
-
-    if (!inputValue) {
-      alert("Please enter a COG URL");
-      return;
-    }
-    loadCog(inputValue);
-    });
-  }
-  const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-  let map = new maplibregl.Map({
-    container: "map",
-    attributionControl: false,
-    style: `https://api.protomaps.com/styles/v5/${isDark ? "black" : "white"}/en.json?key=8ef48a1582087b3d`
-  });
-
-  map.addControl(new maplibregl.AttributionControl({
-      compact: false
-  }));
-
-  const loadCog = async (url) => {
-    const resp = await fetch("https://tiles.rdnt.io/bounds?url=" + url);
-    const bounds = (await resp.json()).bounds;
-    map.fitBounds(bounds, {animate: false});
-
-    if (map.getSource("imageSource")) {
-      map.removeLayer("imageLayer");
-      map.removeSource("imageSource");
-    }
-
-    map.addSource("imageSource", {
-      type: "raster",
-      tiles: [`https://tiles.rdnt.io/tiles/{z}/{x}/{y}@2x?url=${url}`],
-      tileSize: 256
-    });
-
-    map.addLayer({
-      id: "imageLayer",
-      source: "imageSource",
-      type: "raster"
-    });
-  };
-
-
-  const urlParam = params.get("url");
-
-  map.on("load", () => {
-    if (urlParam) {
-      loadCog(urlParam);
-    }
-  });
-</script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>COG Viewer</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      }
+      #root {
+        width: 100vw;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
